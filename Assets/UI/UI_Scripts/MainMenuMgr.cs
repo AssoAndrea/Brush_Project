@@ -6,4 +6,5 @@ using UnityEngine.SceneManagement;
 public class MainMenuMgr : MonoBehaviour
 {
     public void PlayButton() => SceneManager.LoadScene(1);
+
 }
