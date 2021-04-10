@@ -10,9 +10,10 @@ public class colorPicker : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,I
     public Texture2D texture;
     public Image Palette;
     public Image img2;
-
+    public float MinDistance;
 
     List<RectTransform> points;
+    //RectTransform lastPoint;
     List<RectTransform> toRemove;
     bool pressOnImage;
     PointerEventData evDt;
@@ -23,6 +24,12 @@ public class colorPicker : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,I
     {
         evDt = eventData;
         pressOnImage = true;
+        Color c = PickColor();
+        if (c == Color.black)
+        {
+            //lastPoint = new RectTransform();
+            //lastPoint.position = eventData.position;
+        }
         
 
     }
@@ -71,7 +78,7 @@ public class colorPicker : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,I
                 {
                     Vector2 pos = new Vector2(t.position.x, t.position.y);
                     float d = Vector3.Distance(t.position, evDt.position);
-                    if (d < 10f)
+                    if (d <= MinDistance)
                     {
                         Debug.Log("preso check" + t.name);
                         toRemove.Add(t);
@@ -84,8 +91,14 @@ public class colorPicker : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,I
 
                 if (points.Count <=0)
                 {
+                    //if (Vector2.Distance(lastPoint.position,evDt.position)<= MinDistance)
+                    //{
+                    //    pressOnImage = false;
+                    //    Debug.Log("disegno completato");
+                    //}
                     pressOnImage = false;
                     Debug.Log("disegno completato");
+
                 }
             }
             else if(color == Color.red)
