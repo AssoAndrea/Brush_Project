@@ -16,6 +16,8 @@ public class PlayerMove : MonoBehaviour
     private bool isGrounded;        
     private bool isCollided;
     private Animator anim;
+    public LayerMask Ground;
+    public LayerMask Enemy;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +39,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {        
-        isGrounded = Physics2D.OverlapCircle(FeetPos.position, CheckRadius);    
+        isGrounded = Physics2D.OverlapCircle(FeetPos.position, CheckRadius,Ground);
 
         if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
         {
@@ -62,10 +64,19 @@ public class PlayerMove : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
         isCollided = true;
+
+        if (other.collider.gameObject.layer == 6)
+        {
+            IsDamaged = true;
+            isCollided = true;
+            Vector2 coll = transform.position-other.transform.position ;
+            rb.AddForce(coll.normalized*300);
+        }
     }
 
     void OnCollisionExit2D(Collision2D other)
     {
         isCollided = false;
     }
+
 }
