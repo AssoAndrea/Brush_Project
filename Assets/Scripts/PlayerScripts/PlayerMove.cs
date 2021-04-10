@@ -73,9 +73,6 @@ public class PlayerMove : MonoBehaviour
         if (other.collider.gameObject.layer == 6)
         {
             IsDamaged = true;
-            isCollided = true;
-            Vector2 coll = transform.position-other.transform.position ;
-            rb.AddForce(coll.normalized*300);
         }
     }
 
