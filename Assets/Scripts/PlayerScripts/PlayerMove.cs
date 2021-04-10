@@ -47,9 +47,14 @@ public class PlayerMove : MonoBehaviour
             anim.SetTrigger("Jump");
         }
 
-        if (rb.velocity.x < 0)
+        //if (rb.velocity.x < 0)
+        //    transform.GetComponent<SpriteRenderer>().flipX = true;
+        //else if (rb.velocity.x > 0)
+        //    transform.GetComponent<SpriteRenderer>().flipX = false;
+
+        if (Input.GetKey(KeyCode.A))
             transform.GetComponent<SpriteRenderer>().flipX = true;
-        else if (rb.velocity.x > 0)
+        else if (Input.GetKey(KeyCode.D))
             transform.GetComponent<SpriteRenderer>().flipX = false;
 
         anim.SetInteger("Speed", (int)rb.velocity.x);
