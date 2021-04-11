@@ -11,6 +11,7 @@ public class colorPicker : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,I
     public Image Palette;
     public Image img2;
     public float MinDistance;
+    public TestDraw01 drawTest;
 
     List<RectTransform> points;
     //RectTransform lastPoint;
@@ -110,13 +111,24 @@ public class colorPicker : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,I
     }
 
     Color PickColor()
-    {
+    {       
         Vector2 clickNorm = (evDt.position - new Vector2(Palette.rectTransform.position.x, Palette.rectTransform.position.y));
         clickNorm.x /= Palette.rectTransform.rect.width;
         clickNorm.y /= Palette.rectTransform.rect.height;
         Color c = texture.GetPixel((int)(clickNorm.x * texture.width), (int)(clickNorm.y * texture.height));
         img2.color = c;
+
+        for (int i = 0; i < drawTest.destination.width; i++)
+        {
+            for (int j = 0; j < drawTest.destination.height; j++)
+            {
+                Color color = drawTest.destination.GetPixel(i, j);
+                drawTest.TextureToDraw.SetPixel(i, j, new Color(c.r, c.g, c.b, color.a));
+            }
+        }
+
+        drawTest.TextureToDraw.Apply();
+
         return c;
-    }
-    
+    }    
 }

@@ -33,7 +33,7 @@ public class PlayerMove : MonoBehaviour
         if (!(!isGrounded && isCollided))
         {
             rb.velocity = new Vector2(moveInput * Speed, rb.velocity.y);
-        }
+        }      
     }
 
     // Update is called once per frame
@@ -46,12 +46,7 @@ public class PlayerMove : MonoBehaviour
             rb.velocity = Vector2.up * JumpForce;
             anim.SetTrigger("Jump");
         }
-
-        //if (rb.velocity.x < 0)
-        //    transform.GetComponent<SpriteRenderer>().flipX = true;
-        //else if (rb.velocity.x > 0)
-        //    transform.GetComponent<SpriteRenderer>().flipX = false;
-
+        
         if (Input.GetKey(KeyCode.A))
             transform.GetComponent<SpriteRenderer>().flipX = true;
         else if (Input.GetKey(KeyCode.D))
@@ -80,5 +75,4 @@ public class PlayerMove : MonoBehaviour
     {
         isCollided = false;
     }
-
 }
