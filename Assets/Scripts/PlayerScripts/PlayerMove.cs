@@ -12,6 +12,7 @@ public class PlayerMove : MonoBehaviour
     public bool IsDamaged;  //if player is damaged, put this true
     
     private Rigidbody2D rb;
+    private SpriteRenderer SR;
     private float moveInput;
     private bool isGrounded;        
     private bool isCollided;
@@ -21,7 +22,8 @@ public class PlayerMove : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {        
+    {
+        SR = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
@@ -47,18 +49,21 @@ public class PlayerMove : MonoBehaviour
             anim.SetTrigger("Jump");
         }
         
-        if (Input.GetKey(KeyCode.A))
-            transform.GetComponent<SpriteRenderer>().flipX = true;
-        else if (Input.GetKey(KeyCode.D))
-            transform.GetComponent<SpriteRenderer>().flipX = false;
-
         anim.SetInteger("Speed", (int)rb.velocity.x);
 
         if (IsDamaged)
         {
             anim.SetTrigger("Damaged");
             IsDamaged = false;
-        }              
+        }
+
+
+        //Flippo la sprite se il player va a sinistra
+
+        if (rb.velocity.x < -.1f)
+            SR.flipX = true;
+        else if(rb.velocity.x > .1f)
+            SR.flipX = false;
     }    
 
     void OnCollisionEnter2D(Collision2D other)
