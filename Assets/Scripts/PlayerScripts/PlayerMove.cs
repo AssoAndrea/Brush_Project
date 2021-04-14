@@ -10,6 +10,7 @@ public class PlayerMove : MonoBehaviour
     public Transform FeetPos;
     public float CheckRadius;
     public bool IsDamaged;  //if player is damaged, put this true
+    public GameObject WeaponPos;
     
     private Rigidbody2D rb;
     private SpriteRenderer SR;
@@ -57,10 +58,17 @@ public class PlayerMove : MonoBehaviour
         //Flippo la sprite se il player va a sinistra
 
         if (rb.velocity.x < -.1f)
+        {
             SR.flipX = true;
-        else if(rb.velocity.x > .1f)
+            WeaponPos.transform.localPosition = new Vector3(-0.250f,0,0);
+        }
+        else if (rb.velocity.x > .1f)
+        {
             SR.flipX = false;
-    }    
+            WeaponPos.transform.localPosition = new Vector3(0.250f,0,0);
+        }
+
+    }
 
     void OnCollisionEnter2D(Collision2D other)
     {
