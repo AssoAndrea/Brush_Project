@@ -15,7 +15,6 @@ public class PlayerMove : MonoBehaviour
     private SpriteRenderer SR;
     private float moveInput;
     private bool isGrounded;        
-    private bool isCollided;
     private Animator anim;
     public LayerMask Ground;
     public LayerMask Enemy;
@@ -31,11 +30,8 @@ public class PlayerMove : MonoBehaviour
     void FixedUpdate()
     {
         moveInput = Input.GetAxisRaw("Horizontal");
-
-        if (!(!isGrounded && isCollided))
-        {
-            rb.velocity = new Vector2(moveInput * Speed, rb.velocity.y);
-        }      
+ 
+        rb.velocity = new Vector2(moveInput * Speed, rb.velocity.y);
     }
 
     // Update is called once per frame
@@ -68,16 +64,10 @@ public class PlayerMove : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        isCollided = true;
-
         if (other.collider.gameObject.layer == 6)
         {
             IsDamaged = true;
         }
     }
 
-    void OnCollisionExit2D(Collision2D other)
-    {
-        isCollided = false;
-    }
 }
