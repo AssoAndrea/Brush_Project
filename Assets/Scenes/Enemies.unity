@@ -659,6 +659,7 @@ MonoBehaviour:
   DirectionY: -1
   Distance: 0
   FloatingY: 0.5
+  MaxXMove: 0
   IsFlying: 0
   CollidableLayersName:
   - CollidableObj
@@ -992,6 +993,7 @@ MonoBehaviour:
   DirectionY: -1
   Distance: 0
   FloatingY: 0.5
+  MaxXMove: 4
   IsFlying: 1
   CollidableLayersName:
   - CollidableObj
@@ -1226,7 +1228,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 838265966}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.24, y: -0.7, z: 0}
+  m_LocalPosition: {x: 0.24, y: -0.89, z: 0}
   m_LocalScale: {x: 1, y: 6.975439, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2738,6 +2740,7 @@ MonoBehaviour:
   DirectionY: -1
   Distance: 0
   FloatingY: 0.5
+  MaxXMove: 0
   IsFlying: 0
   CollidableLayersName:
   - CollidableObj

@@ -13,6 +13,7 @@ public class AIMove : MonoBehaviour
     [SerializeField] int DirectionY = 1;
     [SerializeField] float Distance;
     [SerializeField] float FloatingY;
+    [SerializeField] float MaxXMove;
     [SerializeField] bool IsFlying;
     [Tooltip("List of Layer Name this GO may collide with")]
     [SerializeField] string[] CollidableLayersName;
@@ -38,6 +39,7 @@ public class AIMove : MonoBehaviour
     Rigidbody2D rb2d;
     SpriteRenderer sr;
     float maxY, minY;
+    float maxX, minX;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +49,8 @@ public class AIMove : MonoBehaviour
         startPosition = transform.position;
         minY = startPosition.y - FloatingY ;
         maxY = startPosition.y + FloatingY ;
+        minX = startPosition.x - MaxXMove;
+        maxX = startPosition.x + MaxXMove;
         
         anim = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
@@ -70,7 +74,7 @@ public class AIMove : MonoBehaviour
             DirectionX = -DirectionX;
             sr.flipX = !sr.flipX;
             collidableX = false;
-        }
+        }        
 
         #region comment code
         //transform.position = new Vector3(transform.position.x + Speed * Time.deltaTime, transform.position.y, 0);
@@ -121,7 +125,14 @@ public class AIMove : MonoBehaviour
                     Debug.Log("T'ho fregato!");
                 }
             //}
-            rb2d.velocity = new Vector2(DirectionX * SpeedX, DirectionY * SpeedY);
+
+            if (rb2d.position.x >= maxX || rb2d.position.x <= minX)
+            {
+                DirectionX = -DirectionX;
+                sr.flipX = !sr.flipX;
+            }
+
+            rb2d.velocity = new Vector2(DirectionX * SpeedX, DirectionY * SpeedY);            
         }
         else
         {
