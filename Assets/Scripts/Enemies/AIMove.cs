@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,14 +8,18 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class AIMove : MonoBehaviour
 {
-    [SerializeField] float SpeedX;
-    [SerializeField] float SpeedY;
+    [Tooltip("Speed on axes X and Y. If IsFlying is false Speed.y must be equal zero")]
+    [SerializeField] Vector2 Speed;
     [SerializeField] int DirectionX = 1;
     [SerializeField] int DirectionY = 1;
-    [SerializeField] float Distance;
-    [SerializeField] float FloatingY;
-    [SerializeField] float MaxXMove;
+    [Tooltip("Range on Y axis from the start position of gameobject")]
+    [SerializeField] float FloatingY = 0;
+    [Tooltip("Range on X axis from the start position of gameobject")]
+    [SerializeField] float RangeX = 0;
     [SerializeField] bool IsFlying;
+    [Tooltip("If it checked, it will able to modify at runtime the RangeX value.\n" +
+        "NOTE: could generate ugly artefacts")]
+    [SerializeField] bool ActivateOffsetX;
     [Tooltip("List of Layer Name this GO may collide with")]
     [SerializeField] string[] CollidableLayersName;
 
@@ -40,18 +45,12 @@ public class AIMove : MonoBehaviour
     SpriteRenderer sr;
     float maxY, minY;
     float maxX, minX;
+    Vector2 checkOffset;
 
     // Start is called before the first frame update
     void Start()
     {
         collidableX = false;
-
-        startPosition = transform.position;
-        minY = startPosition.y - FloatingY ;
-        maxY = startPosition.y + FloatingY ;
-        minX = startPosition.x - MaxXMove;
-        maxX = startPosition.x + MaxXMove;
-        
         anim = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
@@ -65,16 +64,56 @@ public class AIMove : MonoBehaviour
         {
             sr.flipX = !sr.flipX;
         }
+
+        // Verifico che il movimento sull'asse orizzontale sia positivo
+        if (RangeX < 0)
+        {
+            RangeX = -RangeX;
+        }
+
+        startPosition = transform.position;
+
+        // definisco le posizioni massime VERTICALI in cui il GameObject può muoversi
+        minY = startPosition.y - FloatingY;
+        maxY = startPosition.y + FloatingY;
+
+        // definisco le posizioni massime ORIZZONTALI in cui il GameObject può muoversi
+        //minX = startPosition.x - RangeX;
+        //maxX = startPosition.x + RangeX;
+        UpdateHorizontalOffset(startPosition.x, out minX, out maxX);
+
+        checkOffset = new Vector2(RangeX, FloatingY);
+    }
+
+    private void UpdateHorizontalOffset(float StartPositionX, out float minX, out float maxX)
+    {
+        minX = StartPositionX - RangeX;
+        maxX = StartPositionX + RangeX;
     }
 
     private void FixedUpdate()
     {
-        if (collidableX)
+        if (ActivateOffsetX && minX != checkOffset.x)
         {
+            Debug.Log("offset.X was modified");
+            UpdateHorizontalOffset(startPosition.x, out minX, out maxX);
+        }
+
+        /* Gestione del cambio di direzione sull'asse X
+         *
+         * Cause Possibili:
+         *  - Collisione
+         *  - Il GameObject ha un RangeX > 0 e 
+         *       la posizione del suo Rigidbody ha superato uno dei limiti (inferiore o maggiore)
+         *       definiti da minX e maxX
+         */
+        if (collidableX || ( RangeX > 0 && ( rb2d.position.x >= maxX || rb2d.position.x <= minX) ) )
+        {
+            if (collidableX) collidableX = false;
+
             DirectionX = -DirectionX;
             sr.flipX = !sr.flipX;
-            collidableX = false;
-        }        
+        }
 
         #region comment code
         //transform.position = new Vector3(transform.position.x + Speed * Time.deltaTime, transform.position.y, 0);
@@ -126,17 +165,11 @@ public class AIMove : MonoBehaviour
                 }
             //}
 
-            if (rb2d.position.x >= maxX || rb2d.position.x <= minX)
-            {
-                DirectionX = -DirectionX;
-                sr.flipX = !sr.flipX;
-            }
-
-            rb2d.velocity = new Vector2(DirectionX * SpeedX, DirectionY * SpeedY);            
+            rb2d.velocity = new Vector2(DirectionX * Speed.x, DirectionY * Speed.y);            
         }
         else
         {
-            rb2d.velocity = new Vector2(DirectionX * SpeedX, rb2d.velocity.y);
+            rb2d.velocity = new Vector2(DirectionX * Speed.x, rb2d.velocity.y);
         }
 
         // anim.vel = rb2d.vel
