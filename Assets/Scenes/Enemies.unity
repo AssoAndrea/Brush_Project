@@ -653,13 +653,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc21167007ca28f4dba9df08278f9693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedX: 0
-  SpeedY: 5
+  Speed: {x: 2, y: 0}
   DirectionX: 1
   DirectionY: -1
-  Distance: 0
   FloatingY: 0.5
+  RangeX: 1
   IsFlying: 0
+  ActivateOffsetX: 0
   CollidableLayersName:
   - CollidableObj
   - Enemy
@@ -763,7 +763,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 531473194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.06, y: -3.33, z: 0}
+  m_LocalPosition: {x: -0.76, y: -3.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -986,13 +986,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc21167007ca28f4dba9df08278f9693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedX: 1
-  SpeedY: 3
+  Speed: {x: 1, y: 2.4}
   DirectionX: 1
   DirectionY: -1
-  Distance: 0
   FloatingY: 0.5
+  RangeX: -2
   IsFlying: 1
+  ActivateOffsetX: 0
   CollidableLayersName:
   - CollidableObj
   - Enemy
@@ -1226,7 +1226,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 838265966}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.24, y: -0.7, z: 0}
+  m_LocalPosition: {x: 0.24, y: -0.89, z: 0}
   m_LocalScale: {x: 1, y: 6.975439, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2732,13 +2732,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc21167007ca28f4dba9df08278f9693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedX: 0
-  SpeedY: 0
+  Speed: {x: 1, y: 0}
   DirectionX: 1
   DirectionY: -1
-  Distance: 0
   FloatingY: 0.5
+  RangeX: 0
   IsFlying: 0
+  ActivateOffsetX: 0
   CollidableLayersName:
   - CollidableObj
   - Enemy
