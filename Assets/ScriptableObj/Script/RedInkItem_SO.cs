@@ -7,6 +7,7 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "RedInkItem",menuName = "DrawableItem/RedInkItem")]
 public class RedInkItem_SO : DrawableItem_SO
 {
-    
-    
+    public TypeOfInk ink = TypeOfInk.Red;
+
+
 }

@@ -59,8 +59,15 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
     // Start is called before the first frame update
     void Start()
     {
+        //SET IMAGE
         canvas = GetComponentInParent<Canvas>();
         OwnImage = GetComponent<Image>();
+        OwnImage.sprite = SelectedObject.ImageToDisplay;
+        MaskTexture = SelectedObject.Mask;
+
+
+        List<RectTransform> PointToCreate = SelectedObject.GetCheckpoints();
+        CreatePointsOnScene(PointToCreate);
         RectTransform[] p = GetComponentsInChildren<RectTransform>();
         ScaleFactor = canvas.scaleFactor;
         toRemove = new List<RectTransform>();
@@ -77,6 +84,16 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
             }
         }
         
+    }
+    void CreatePointsOnScene(List<RectTransform> list)
+    {
+        foreach (RectTransform p in list)
+        {
+            RectTransform newP = Instantiate(p);
+            newP.SetParent(transform);
+            newP.anchoredPosition = p.anchoredPosition;
+            newP.tag = p.tag;
+        }
     }
 
 
