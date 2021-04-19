@@ -19,6 +19,7 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
     List<RectTransform> points;
     RectTransform lastPoint;
     List<RectTransform> toRemove;
+    List<RectTransform> originalList = new List<RectTransform>();
     bool pressOnImage;
     float ScaleFactor;
     Vector2 MouseClickOnCanvas;
@@ -38,13 +39,16 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
     {
         if (pressOnImage)
         {
-            BoundsExit();
+            OnFail();
         }
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-
+        if (pressOnImage)
+        {
+            OnFail();
+        }
         pressOnImage = false;
     }
     public void OnPointerDown(PointerEventData eventData)
@@ -62,18 +66,8 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
     }
     #endregion
 
-
-
-    // Start is called before the first frame update
-    void Start()
+    private void SetImageCheckPoints()
     {
-        //SET IMAGE
-        canvas = GetComponentInParent<Canvas>();
-        OwnImage = GetComponent<Image>();
-        OwnImage.sprite = SelectedObject.ImageToDisplay;
-        MaskTexture = SelectedObject.Mask;
-
-
         List<RectTransform> PointToCreate = SelectedObject.GetCheckpoints();
         CreatePointsOnScene(PointToCreate);
         RectTransform[] p = GetComponentsInChildren<RectTransform>();
@@ -85,12 +79,26 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
             if (i.tag == "Checkpoint")
             {
                 points.Add(i);
+                originalList.Add(i);
             }
             else
             {
                 lastPoint = i;
             }
         }
+    }
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        //SET IMAGE
+        canvas = GetComponentInParent<Canvas>();
+        OwnImage = GetComponent<Image>();
+        OwnImage.sprite = SelectedObject.ImageToDisplay;
+        MaskTexture = SelectedObject.Mask;
+
+        SetImageCheckPoints();
         
     }
 
@@ -150,13 +158,18 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
             else
             {
 
-                BoundsExit();
+                OnFail();
             }
         }
     }
-    public void BoundsExit()
+    public void OnFail()
     {
         pressOnImage = false;
+        points.Clear();
+        foreach (RectTransform tr in originalList)
+        {
+            points.Add(tr);
+        }
         Debug.Log("fuori");
     }
 

@@ -934,7 +934,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaskTexture: {fileID: 2800000, guid: 0962b87d0b5481941b12ecd9af396a3b, type: 3}
   MinDistance: 50
-  SelectedObject: {fileID: 11400000, guid: 42a8950796e29654eb88cbf3e59c42a8, type: 2}
+  SelectedObject: {fileID: 11400000, guid: 4830acf4c6e45374883a938e21bf5583, type: 2}
 --- !u!114 &1974834154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1246,6 +1246,7 @@ GameObject:
   - component: {fileID: 259237525837989898}
   - component: {fileID: 1865572150275801327}
   - component: {fileID: 1688176292130363328}
+  - component: {fileID: 1688176292130363329}
   m_Layer: 5
   m_Name: Brush_bar_Space
   m_TagString: Untagged
@@ -1267,7 +1268,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   redInkFill: {fileID: 1272099777876261747}
   whiteInkFill: {fileID: 4027404305667231998}
-  greenInkFill: {fileID: 3651739384300954086}
+  greenInkFill: {fileID: 8462876108981864606}
+  inventory: {fileID: 11400000, guid: f9454c44e6fde79478e97256bd497a49, type: 2}
+--- !u!114 &1688176292130363329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688176292130363327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8992ef3a28e1f9c42adfe33a0e4ce6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: f95bf90eaa1b62747afd71924163245c, type: 2}
+  response:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1688176292130363328}
+        m_TargetAssemblyTypeName: BarSpace_Script, Assembly-CSharp
+        m_MethodName: UpdateInkUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1865572150275801327
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class PaintLine : MonoBehaviour
 
     LineRenderer currentLineRenderer;
     public int a = 1;
+    GameObject brushInstance;
     Vector2 lastPos;
 
     private void Update()
@@ -31,13 +32,14 @@ public class PaintLine : MonoBehaviour
         }
         else
         {
+            Destroy(brushInstance);
             currentLineRenderer = null;
         }
     }
 
     void CreateBrush()
     {
-        GameObject brushInstance = Instantiate(brush);
+        brushInstance = Instantiate(brush);
         brushInstance.transform.SetParent(parent);
         currentLineRenderer = brushInstance.GetComponent<LineRenderer>();
 

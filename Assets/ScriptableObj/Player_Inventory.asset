@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4de3b61b1afa60446803299e6154adb7, type: 3}
+  m_Name: Player_Inventory
+  m_EditorClassIdentifier: 
+  drawableObjects: {fileID: 11400000, guid: 177e93bfc68eb42418f9247459dd158a, type: 2}
+  ItemToDraw: {fileID: 11400000, guid: 42a8950796e29654eb88cbf3e59c42a8, type: 2}
+  UpdateInkEvent: {fileID: 11400000, guid: f95bf90eaa1b62747afd71924163245c, type: 2}
+  maxRedInk: 100
+  maxWhiteInk: 100
+  maxGreenInk: 100
+  currRedInk: 100
+  currWhiteInk: 50
+  currGreenInk: 50
+  InkToUse: 0

@@ -9,23 +9,28 @@ public class BarSpace_Script : MonoBehaviour
     public Image redInkFill;
     public Image whiteInkFill;
     public Image greenInkFill;
+    public Inventory_SO inventory;
 
 
-    float redInk;
-    float whiteInk;
-    float greenInk;
+
     // Start is called before the first frame update
     void Start()
     {
-        redInk = 1;
-        whiteInk = 1;
-        greenInk = 1;
+        UpdateInkUI();
     }
+    public void UpdateInkUI()
+    {
+        redInkFill.fillAmount = inventory.currRedInk / inventory.maxRedInk;
+        whiteInkFill.fillAmount = inventory.currWhiteInk / inventory.maxWhiteInk;
+        greenInkFill.fillAmount = inventory.currGreenInk / inventory.maxGreenInk;
+        Debug.Log(redInkFill.fillAmount);
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            inventory.AddInk(TypeOfInk.Red, 5);
+        }
 
-
-    public void SetRedInkVal(float value) => UpdateInkSlider(redInkFill, value);
-    public void SetWhiteInkVal(float value) => UpdateInkSlider(whiteInkFill, value);
-    public void SetGreenInkVal(float value) => UpdateInkSlider(greenInkFill, value);
-
-    public void UpdateInkSlider(Image slider, float val) => slider.fillAmount = val;
+    }
 }
