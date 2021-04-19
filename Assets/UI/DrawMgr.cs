@@ -25,21 +25,15 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
     
 
 
-    public void OnPointerDown(PointerEventData eventData)
+
+    public void SetObjectToDraw(DrawableItem_SO item)
     {
-
-        MouseClickOnCanvas = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-        pressOnImage = true;
-        Color c = PickColor();
-        if (c == Color.black)
-        {
-            lastPoint.anchoredPosition = RelativeMouseToImage();
-        }
-        
-
+        SelectedObject = item;
+        OwnImage.sprite = SelectedObject.ImageToDisplay;
+        MaskTexture = SelectedObject.Mask;
     }
 
-
+    #region Pointer CallBack
     public void OnPointerExit(PointerEventData eventData)
     {
         if (pressOnImage)
@@ -53,6 +47,20 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
 
         pressOnImage = false;
     }
+    public void OnPointerDown(PointerEventData eventData)
+    {
+
+        MouseClickOnCanvas = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        pressOnImage = true;
+        Color c = PickColor();
+        if (c == Color.black)
+        {
+            lastPoint.anchoredPosition = RelativeMouseToImage();
+        }
+
+
+    }
+    #endregion
 
 
 
@@ -85,6 +93,9 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
         }
         
     }
+
+
+
     void CreatePointsOnScene(List<RectTransform> list)
     {
         foreach (RectTransform p in list)

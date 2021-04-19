@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421b68fc317eea14b8f0e5673c5631f1, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  ImageToDisplay: {fileID: 21300000, guid: acf3d1e86130abd43951b624989711e3, type: 3}
-  Mask: {fileID: 2800000, guid: 303d4bb317debb2419bc41b7092003fd, type: 3}
+  ImageToDisplay: {fileID: 21300000, guid: 1a3cec8d59464df4182f2c99747845dc, type: 3}
+  Mask: {fileID: 2800000, guid: 342759001dc21344fa397f0d06fb5f3c, type: 3}
   Prefab: {fileID: 6263922957981351084, guid: 522b7b6c1bf2c4744a679411aed55b58, type: 3}
   ink: 1

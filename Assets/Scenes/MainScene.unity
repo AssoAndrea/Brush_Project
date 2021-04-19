@@ -918,7 +918,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 435, y: 50}
-  m_SizeDelta: {x: 650, y: 630}
+  m_SizeDelta: {x: 650, y: 650}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1974834153
 MonoBehaviour:
@@ -932,7 +932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fde85f18f0fea441bc1be74ec83f400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaskTexture: {fileID: 0}
+  MaskTexture: {fileID: 2800000, guid: 0962b87d0b5481941b12ecd9af396a3b, type: 3}
   MinDistance: 50
   SelectedObject: {fileID: 11400000, guid: 42a8950796e29654eb88cbf3e59c42a8, type: 2}
 --- !u!114 &1974834154
@@ -948,7 +948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.49803922}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1010,7 +1010,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.05
+      value: 0.1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
