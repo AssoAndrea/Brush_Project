@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Scorpion
+  - Checkpoint
+  - Bee
+  - Snake
+  - Hammer
+  - Sword
+  - Bow
   layers:
   - Default
   - TransparentFX

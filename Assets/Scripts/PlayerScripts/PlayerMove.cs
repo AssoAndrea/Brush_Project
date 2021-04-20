@@ -59,13 +59,11 @@ public class PlayerMove : MonoBehaviour
 
         if (rb.velocity.x < -.1f)
         {
-            SR.flipX = true;
-            WeaponPos.transform.localPosition = new Vector3(-0.250f,0,0);
+            transform.rotation =Quaternion.Euler(new Vector3(transform.rotation.x, 180, transform.rotation.z));
         }
         else if (rb.velocity.x > .1f)
         {
-            SR.flipX = false;
-            WeaponPos.transform.localPosition = new Vector3(0.250f,0,0);
+            transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.x,0, transform.rotation.z));
         }
 
     }

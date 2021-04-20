@@ -161,7 +161,7 @@ public class AIMove : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("T'ho fregato!");
+                    //Debug.Log("T'ho fregato!");
                 }
             //}
 
