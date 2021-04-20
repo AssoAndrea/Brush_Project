@@ -14,14 +14,19 @@ public class WeaponSystem : MonoBehaviour
     public Animator HammerAnim;
     public GameObject BowOBJ;
     public Animator BowAnim;
+    public GameObject BowRotObj;
+    public GameObject ArrowPrefab;
+    public float FireRate = 0.5f;
+    float timer;
 
+    Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         OldWeapon = WeaponHandle;
         ResetWeapons(WeaponHandle);
-
     }
 
     // Update is called once per frame
@@ -104,9 +109,35 @@ public class WeaponSystem : MonoBehaviour
 
     public void Bow()
     {
-        if (Input.GetMouseButton(0))
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 lookDir =  mousePos - rb.position;
+        Vector2 normDir = lookDir.normalized;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+        BowRotObj.transform.rotation =Quaternion.Euler(new Vector3(0,0,angle));
+
+        if (Input.GetMouseButton(0)&& BowAnim.GetBool("Return") == true)
         {
-            SwordAnim.SetTrigger("Attack");
+            BowAnim.SetBool("Fire", true);
+            BowAnim.SetBool("Return", false);
+
+            GameObject go = Instantiate(ArrowPrefab, BowRotObj.transform.position+new Vector3(normDir.x,normDir.y,0)*1, BowRotObj.transform.rotation);
+            Rigidbody2D rb = go.GetComponent<Rigidbody2D>();
+            go.GetComponent<Rigidbody2D>().AddForce(normDir*500);
+        }
+        else
+        {
+            BowAnim.SetBool("Fire", false);
+
+        }
+
+        if (BowAnim.GetBool("Return") == false)
+        {
+            timer += Time.deltaTime;
+            if (timer >= FireRate)
+            {
+                timer = 0;
+                BowAnim.SetBool("Return", true);
+            }
         }
     }
 }
