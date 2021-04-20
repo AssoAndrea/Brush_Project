@@ -23,14 +23,5 @@ public class BarSpace_Script : MonoBehaviour
         redInkFill.fillAmount = inventory.currRedInk / inventory.maxRedInk;
         whiteInkFill.fillAmount = inventory.currWhiteInk / inventory.maxWhiteInk;
         greenInkFill.fillAmount = inventory.currGreenInk / inventory.maxGreenInk;
-        Debug.Log(redInkFill.fillAmount);
-    }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            inventory.AddInk(TypeOfInk.Red, 5);
-        }
-
     }
 }

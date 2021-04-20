@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3a2a8a332be6c74690d52e2c4399fcb, type: 3}
-  m_Name: OnDrawSpaceShow
+  m_Name: OnDrawFail
   m_EditorClassIdentifier: 
   listeners: []

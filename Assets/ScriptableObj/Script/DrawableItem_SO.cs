@@ -23,4 +23,5 @@ public class DrawableItem_SO: ScriptableObject
         }
         return points;
     }
+
 }

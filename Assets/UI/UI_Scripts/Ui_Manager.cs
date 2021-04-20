@@ -5,25 +5,34 @@ using UnityEngine;
 public class Ui_Manager : MonoBehaviour
 {
     public static Ui_Manager instance;
-    public GameObject DrawSpace, Mask;
+    public DrawMgr DrawSpace;
+    public Inventory_SO inventory;
 
     // Start is called before the first frame update
     void Start()
     {
         if (!instance) instance = this;
+        inventory.ResetInventory();
     }
 
 
 
-    public static void ShowDrawSpace()
+    public void ShowDrawSpace()
     {
-        instance.DrawSpace.SetActive(true);
-        instance.Mask.SetActive(true);
+        instance.DrawSpace.gameObject.SetActive(true);
     }
 
-    public static void HideDrawSpace()
+    public void HideDrawSpace()
     {
-        instance.DrawSpace.SetActive(false);
-        instance.Mask.SetActive(false);
+        instance.DrawSpace.gameObject.SetActive(false);
     }
+    public void SetItem()
+    {
+        DrawSpace.SetObjectToDraw(inventory.ItemToDraw);
+    }
+    public void Prova()
+    {
+        Debug.Log("chiamato");
+    }
+ 
 }

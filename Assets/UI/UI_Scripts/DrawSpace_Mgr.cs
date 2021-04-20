@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DrawSpace_Mgr : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     void Start()
     {
         

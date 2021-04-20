@@ -5,13 +5,23 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Inventory", menuName = "Player/Inventory")]
 public class Inventory_SO : ScriptableObject
 {
+    [Header("Inventory")]
+    public TypeOfInk InkToUse;
+    public bool DrawSpaceOpen;
     public DrawableObjectsInventory drawableObjects;
     public DrawableItem_SO ItemToDraw;
-    public GameEvent UpdateInkEvent;
 
+    [Header("Events")]
+    public GameEvent UpdateInkEvent;
+    public GameEvent SelectedInkEvent;
+    public GameEvent SelectedItemEvent;
+
+    [Header("Ink Value")]
+    public float StartRedInk;
+    public float StartWhiteInk;
+    public float StartGreenInk;
     public float maxRedInk, maxWhiteInk, maxGreenInk;
     public float currRedInk, currWhiteInk, currGreenInk;
-    public TypeOfInk InkToUse;
 
     public void SetInk(TypeOfInk ink) => InkToUse = ink;
     public void SetItemToDraw(DrawableItem_SO item) => ItemToDraw = item;
@@ -61,6 +71,18 @@ public class Inventory_SO : ScriptableObject
             default:
                 break;
         }
+
+        UpdateInkEvent.Raise();
+    }
+
+
+    //SOLO A SCOPO DEBUG
+    public void ResetInventory()
+    {
+        currRedInk = StartRedInk;
+        currGreenInk = StartGreenInk;
+        currWhiteInk = StartWhiteInk;
+        DrawSpaceOpen = false;
 
         UpdateInkEvent.Raise();
     }

@@ -6,22 +6,25 @@ using UnityEngine.Events;
 
 public class GameEventListener : MonoBehaviour
 {
-    public GameEvent GameEvent;
-    public UnityEvent[] response;
+    public GameEvent[] GameEvent;
+    public UnityEvent response;
 
     private void OnEnable()
     {
-        GameEvent.RegisterLisenter(this);
+        foreach (GameEvent ev in GameEvent)
+        {
+            ev.RegisterLisenter(this);
+        }
     }
     private void OnDisable()
     {
-        GameEvent.UnregisterListener(this);
+        foreach (GameEvent ev in GameEvent)
+        {
+            ev.UnregisterListener(this);
+        }
     }
     public void OnEventRaised()
     {
-        foreach (UnityEvent item in response)
-        {
-            item.Invoke();
-        }
+        response.Invoke();
     }
 }

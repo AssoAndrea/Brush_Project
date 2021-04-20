@@ -6,7 +6,7 @@ using System;
 [Serializable]
 public struct DrawableItem
 {
-    public TypeOfInk type;
+    public RedInkItem type;
     public DrawableItem_SO item;
 
 }

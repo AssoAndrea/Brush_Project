@@ -10,10 +10,14 @@ using UnityEngine.UI;
 public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerExitHandler
 {
     
-    public Texture2D MaskTexture;
     public float MinDistance;
     public DrawableItem_SO SelectedObject;
 
+    [Header("Events")]
+    public UnityEvent DrawFail;
+    public UnityEvent DrawComplete;
+
+    Texture2D MaskTexture;
     Canvas canvas;
     Image OwnImage;
     List<RectTransform> points;
@@ -23,13 +27,16 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
     bool pressOnImage;
     float ScaleFactor;
     Vector2 MouseClickOnCanvas;
-    
 
 
 
     public void SetObjectToDraw(DrawableItem_SO item)
     {
         SelectedObject = item;
+        if (OwnImage == null)
+        {
+            InitComponent();
+        }
         OwnImage.sprite = SelectedObject.ImageToDisplay;
         MaskTexture = SelectedObject.Mask;
     }
@@ -66,6 +73,15 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
     }
     #endregion
 
+    private void ResetPoints()
+    {
+        foreach (RectTransform rectTransform in originalList)
+        {
+            Destroy(rectTransform.gameObject);
+        }
+        originalList.Clear();
+        Destroy(lastPoint.gameObject);
+    }
     private void SetImageCheckPoints()
     {
         List<RectTransform> PointToCreate = SelectedObject.GetCheckpoints();
@@ -92,14 +108,24 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
     // Start is called before the first frame update
     void Start()
     {
-        //SET IMAGE
+
+    }
+    void InitComponent()
+    {
         canvas = GetComponentInParent<Canvas>();
         OwnImage = GetComponent<Image>();
+    }
+    private void OnEnable()
+    {
+
         OwnImage.sprite = SelectedObject.ImageToDisplay;
         MaskTexture = SelectedObject.Mask;
 
         SetImageCheckPoints();
-        
+    }
+    private void OnDisable()
+    {
+        ResetPoints();
     }
 
 
@@ -148,7 +174,6 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
                     {
                         pressOnImage = false;
                         Debug.Log("preso ultimo");
-
                         Debug.Log("disegno completato");
                     }
 
@@ -171,6 +196,7 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
             points.Add(tr);
         }
         Debug.Log("fuori");
+        DrawFail.Invoke();
     }
 
 

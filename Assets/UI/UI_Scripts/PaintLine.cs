@@ -11,7 +11,6 @@ public class PaintLine : MonoBehaviour
     public AnimationCurve WidthCurve;
 
     LineRenderer currentLineRenderer;
-    public int a = 1;
     GameObject brushInstance;
     Vector2 lastPos;
 
@@ -32,9 +31,13 @@ public class PaintLine : MonoBehaviour
         }
         else
         {
-            Destroy(brushInstance);
-            currentLineRenderer = null;
+            StopDraw();
         }
+    }
+    public void StopDraw()
+    {
+        Destroy(brushInstance);
+        currentLineRenderer = null;
     }
 
     void CreateBrush()
