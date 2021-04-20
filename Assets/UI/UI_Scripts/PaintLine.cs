@@ -9,6 +9,7 @@ public class PaintLine : MonoBehaviour
     public GameObject brush;
     public Transform parent;
     public AnimationCurve WidthCurve;
+    public bool canDraw;
 
     LineRenderer currentLineRenderer;
     GameObject brushInstance;
@@ -21,13 +22,20 @@ public class PaintLine : MonoBehaviour
 
     void Drawing()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (canDraw)
         {
-            CreateBrush();
-        }
-        else if (Input.GetKey(KeyCode.Mouse0))
-        {
-            PointToMousePos();
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                CreateBrush();
+            }
+            else if (Input.GetKey(KeyCode.Mouse0))
+            {
+                if (brushInstance == null)
+                {
+                    CreateBrush();
+                }
+                PointToMousePos();
+            }
         }
         else
         {
@@ -56,6 +64,7 @@ public class PaintLine : MonoBehaviour
 
     void AddAPoint(Vector2 pointPos)
     {
+        Debug.Log(canDraw);
         currentLineRenderer.positionCount++;
         int positionIndex = currentLineRenderer.positionCount - 1;
         currentLineRenderer.SetPosition(positionIndex, pointPos);

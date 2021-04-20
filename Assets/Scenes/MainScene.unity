@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 427990243}
   - component: {fileID: 427990242}
   - component: {fileID: 427990244}
+  - component: {fileID: 427990245}
   m_Layer: 5
   m_Name: Remaining_Color
   m_TagString: Untagged
@@ -290,6 +291,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ImageToFill: {fileID: 810705622}
   inventory: {fileID: 11400000, guid: f9454c44e6fde79478e97256bd497a49, type: 2}
+--- !u!114 &427990245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427990240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8992ef3a28e1f9c42adfe33a0e4ce6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent:
+  - {fileID: 11400000, guid: f95bf90eaa1b62747afd71924163245c, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 427990244}
+        m_TargetAssemblyTypeName: Remaining_Color_Scr, Assembly-CSharp
+        m_MethodName: UpdateBar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,15 +556,13 @@ GameObject:
   - component: {fileID: 931802082}
   - component: {fileID: 931802081}
   - component: {fileID: 931802083}
-  - component: {fileID: 931802085}
-  - component: {fileID: 931802084}
   m_Layer: 5
   m_Name: DrawSpace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &931802080
 RectTransform:
   m_ObjectHideFlags: 0
@@ -605,64 +633,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41c49a9c7fdaa6d4aa5ee55d71ace751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &931802084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 931802079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8992ef3a28e1f9c42adfe33a0e4ce6c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GameEvent:
-  - {fileID: 11400000, guid: b9aebc5dac075f747b8712a89f48bb7a, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 931802083}
-        m_TargetAssemblyTypeName: DrawSpace_Mgr, Assembly-CSharp
-        m_MethodName: Hide
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &931802085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 931802079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8992ef3a28e1f9c42adfe33a0e4ce6c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GameEvent:
-  - {fileID: 11400000, guid: 6f5ab01ca61595144a9fda044910cade, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 931802083}
-        m_TargetAssemblyTypeName: DrawSpace_Mgr, Assembly-CSharp
-        m_MethodName: Show
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &1115089071
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,6 +950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MinDistance: 40
   SelectedObject: {fileID: 11400000, guid: 4830acf4c6e45374883a938e21bf5583, type: 2}
+  brush: {fileID: 2057962794}
   DrawFail:
     m_PersistentCalls:
       m_Calls:
@@ -1105,6 +1076,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  canDraw: 0
 --- !u!4 &2057962795
 Transform:
   m_ObjectHideFlags: 0
@@ -1518,6 +1490,8 @@ GameObject:
   - component: {fileID: 5612564095569231568}
   - component: {fileID: 1955226877673273933}
   - component: {fileID: 1955226877673273932}
+  - component: {fileID: 1955226877673273935}
+  - component: {fileID: 1955226877673273934}
   m_Layer: 5
   m_Name: Game_UI
   m_TagString: Untagged
@@ -1575,6 +1549,64 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Ui_Manager, Assembly-CSharp
         m_MethodName: SetItem
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1955226877673273934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955226877673273931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8992ef3a28e1f9c42adfe33a0e4ce6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent:
+  - {fileID: 11400000, guid: 0f7fba0d281b7224287396f7c0939212, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5612564095569231568}
+        m_TargetAssemblyTypeName: Ui_Manager, Assembly-CSharp
+        m_MethodName: ShowDrawSpace
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &1955226877673273935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955226877673273931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8992ef3a28e1f9c42adfe33a0e4ce6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent:
+  - {fileID: 11400000, guid: b9aebc5dac075f747b8712a89f48bb7a, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 931802079}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1987,7 +2019,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdcc34754fd837742be7a2150b96573f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DrawSpace: {fileID: 1974834153}
+  ImageToDraw: {fileID: 1974834153}
+  DrawSpace: {fileID: 931802083}
   inventory: {fileID: 11400000, guid: f9454c44e6fde79478e97256bd497a49, type: 2}
 --- !u!224 &5663393165176046035
 RectTransform:

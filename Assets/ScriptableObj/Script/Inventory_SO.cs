@@ -17,6 +17,7 @@ public class Inventory_SO : ScriptableObject
     public GameEvent SelectedItemEvent;
 
     [Header("Ink Value")]
+    public float InkLoseWhileDraw = 5;
     public float StartRedInk;
     public float StartWhiteInk;
     public float StartGreenInk;
@@ -26,7 +27,7 @@ public class Inventory_SO : ScriptableObject
     public void SetInk(TypeOfInk ink) => InkToUse = ink;
     public void SetItemToDraw(DrawableItem_SO item) => ItemToDraw = item;
 
-    public void AddInk(TypeOfInk ink, int amount)
+    public void AddInk(TypeOfInk ink, float amount)
     {
         switch (ink)
         {
@@ -74,7 +75,41 @@ public class Inventory_SO : ScriptableObject
 
         UpdateInkEvent.Raise();
     }
-
+    public float GetCurrentInk()
+    {
+        switch (InkToUse)
+        {
+            case TypeOfInk.White:
+                return currWhiteInk;
+            case TypeOfInk.Red:
+                return currRedInk;
+            case TypeOfInk.Green:
+                return currGreenInk;
+            default:
+                return currGreenInk;
+        }
+    }
+    public void SetInkVal(TypeOfInk ink,float val)
+    {
+        switch (ink)
+        {
+            case TypeOfInk.White:
+                currWhiteInk = val;
+                break;
+            case TypeOfInk.Red:
+                currRedInk = val;
+                break;
+            case TypeOfInk.Green:
+                currGreenInk = val;
+                break;
+        }
+        UpdateInkEvent.Raise();
+    }
+    public void RemoveInkWhileDraw()
+    {
+        AddInk(InkToUse, -InkLoseWhileDraw * Time.deltaTime);
+        UpdateInkEvent.Raise();
+    }
 
     //SOLO A SCOPO DEBUG
     public void ResetInventory()

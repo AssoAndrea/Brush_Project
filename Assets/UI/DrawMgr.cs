@@ -12,6 +12,7 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
     
     public float MinDistance;
     public DrawableItem_SO SelectedObject;
+    public PaintLine brush;
 
     [Header("Events")]
     public UnityEvent DrawFail;
@@ -28,6 +29,9 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
     float ScaleFactor;
     Vector2 MouseClickOnCanvas;
 
+    //saved ink
+    float startInk;
+
 
 
     public void SetObjectToDraw(DrawableItem_SO item)
@@ -39,6 +43,134 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
         }
         OwnImage.sprite = SelectedObject.ImageToDisplay;
         MaskTexture = SelectedObject.Mask;
+    }
+
+    //DOVE VENGONO CREATI I PUNTI E SETTATI I CHECKPOINT
+    #region INIZIALIZZAZIONE 
+    private void SetImageCheckPoints()
+    {
+        List<RectTransform> PointToCreate = SelectedObject.GetCheckpoints();
+        CreatePointsOnScene(PointToCreate);
+        RectTransform[] p = GetComponentsInChildren<RectTransform>();
+        ScaleFactor = canvas.scaleFactor;
+        toRemove = new List<RectTransform>();
+        points = new List<RectTransform>();
+        foreach (RectTransform i in p)
+        {
+            if (i.tag == "Checkpoint")
+            {
+                points.Add(i);
+                originalList.Add(i);
+            }
+            else
+            {
+                lastPoint = i;
+            }
+        }
+    }
+
+    void InitComponent()
+    {
+        canvas = GetComponentInParent<Canvas>();
+        OwnImage = GetComponent<Image>();
+    }
+
+
+    void CreatePointsOnScene(List<RectTransform> list)
+    {
+        foreach (RectTransform p in list)
+        {
+            RectTransform newP = Instantiate(p);
+            newP.SetParent(transform);
+            newP.anchoredPosition = p.anchoredPosition;
+            newP.tag = p.tag;
+        }
+    } 
+    #endregion 
+
+
+    private void ResetPoints()
+    {
+        foreach (RectTransform rectTransform in originalList)
+        {
+            Destroy(rectTransform.gameObject);
+        }
+        originalList.Clear();
+        Destroy(lastPoint.gameObject);
+    }
+
+
+    
+    private void DrawLogic()
+    {
+        if (pressOnImage)
+        {
+            brush.canDraw = true;
+            Color color = PickColor();
+
+            if (color == Color.black)
+            {
+                foreach (RectTransform t in points)
+                {
+                    //Vector2 pos = new Vector2(t.position.x, t.position.y);
+                    float d = Vector3.Distance(t.anchoredPosition, RelativeMouseToImage());
+                    if (d <= MinDistance)
+                    {
+                        Debug.Log("preso check " + t.name);
+                        toRemove.Add(t);
+                    }
+                }
+                foreach (RectTransform rectTransform in toRemove)
+                {
+                    points.Remove(rectTransform);
+                }
+
+                if (points.Count <= 0)
+                {
+                    if (Vector2.Distance(lastPoint.anchoredPosition, RelativeMouseToImage()) <= MinDistance)
+                    {
+                        pressOnImage = false;
+                        brush.canDraw = false;
+                        Debug.Log("preso ultimo");
+                        Debug.Log("disegno completato");
+                    }
+
+                }
+            }
+            else
+            {
+
+                OnFail();
+            }
+        }
+        else
+        {
+            brush.canDraw = false;
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        DrawLogic();
+        if (pressOnImage)
+        {
+            Game_Manager.instance.inventory.RemoveInkWhileDraw();
+        }
+        
+    }
+    public void OnFail()
+    {
+        pressOnImage = false;
+        points.Clear();
+        brush.canDraw = false;
+        foreach (RectTransform tr in originalList)
+        {
+            points.Add(tr);
+        }
+        Game_Manager.instance.inventory.SetInkVal(Game_Manager.instance.inventory.InkToUse, startInk);
+        Debug.Log("fuori");
+        DrawFail.Invoke();
     }
 
     #region Pointer CallBack
@@ -73,132 +205,26 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
     }
     #endregion
 
-    private void ResetPoints()
-    {
-        foreach (RectTransform rectTransform in originalList)
-        {
-            Destroy(rectTransform.gameObject);
-        }
-        originalList.Clear();
-        Destroy(lastPoint.gameObject);
-    }
-    private void SetImageCheckPoints()
-    {
-        List<RectTransform> PointToCreate = SelectedObject.GetCheckpoints();
-        CreatePointsOnScene(PointToCreate);
-        RectTransform[] p = GetComponentsInChildren<RectTransform>();
-        ScaleFactor = canvas.scaleFactor;
-        toRemove = new List<RectTransform>();
-        points = new List<RectTransform>();
-        foreach (RectTransform i in p)
-        {
-            if (i.tag == "Checkpoint")
-            {
-                points.Add(i);
-                originalList.Add(i);
-            }
-            else
-            {
-                lastPoint = i;
-            }
-        }
-    }
-
-
-    // Start is called before the first frame update
+    #region UnityCallback
     void Start()
     {
 
     }
-    void InitComponent()
-    {
-        canvas = GetComponentInParent<Canvas>();
-        OwnImage = GetComponent<Image>();
-    }
+
     private void OnEnable()
     {
 
         OwnImage.sprite = SelectedObject.ImageToDisplay;
         MaskTexture = SelectedObject.Mask;
+        startInk = Game_Manager.instance.inventory.GetCurrentInk();
 
         SetImageCheckPoints();
     }
     private void OnDisable()
     {
         ResetPoints();
-    }
-
-
-
-    void CreatePointsOnScene(List<RectTransform> list)
-    {
-        foreach (RectTransform p in list)
-        {
-            RectTransform newP = Instantiate(p);
-            newP.SetParent(transform);
-            newP.anchoredPosition = p.anchoredPosition;
-            newP.tag = p.tag;
-        }
-    }
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
-
-        if (pressOnImage)
-        {
-            Color color = PickColor();
-
-            if (color == Color.black)
-            {
-                foreach (RectTransform t in points)
-                {
-                    //Vector2 pos = new Vector2(t.position.x, t.position.y);
-                    float d = Vector3.Distance(t.anchoredPosition, RelativeMouseToImage());
-                    if (d <= MinDistance)
-                    {
-                        Debug.Log("preso check " + t.name);
-                        toRemove.Add(t);
-                    }
-                }
-                foreach (RectTransform rectTransform in toRemove)
-                {
-                    points.Remove(rectTransform);
-                }
-
-                if (points.Count <=0)
-                {
-                    if (Vector2.Distance(lastPoint.anchoredPosition,RelativeMouseToImage())<= MinDistance)
-                    {
-                        pressOnImage = false;
-                        Debug.Log("preso ultimo");
-                        Debug.Log("disegno completato");
-                    }
-
-
-                }
-            }
-            else
-            {
-
-                OnFail();
-            }
-        }
-    }
-    public void OnFail()
-    {
-        pressOnImage = false;
-        points.Clear();
-        foreach (RectTransform tr in originalList)
-        {
-            points.Add(tr);
-        }
-        Debug.Log("fuori");
-        DrawFail.Invoke();
-    }
-
+    } 
+    #endregion
 
     #region utility
     Color PickColor()

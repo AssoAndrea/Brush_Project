@@ -6,7 +6,9 @@ using UnityEditor;
 
 public class Game_Manager : MonoBehaviour
 {
+    public static Game_Manager instance;
     public Inventory_SO inventory;
+    
 
     [Header("Events")]
     [Space(20)]
@@ -16,6 +18,7 @@ public class Game_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (instance == null) instance = this;
     }
 
     // Update is called once per frame

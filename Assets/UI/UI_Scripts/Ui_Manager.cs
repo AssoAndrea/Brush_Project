@@ -5,7 +5,8 @@ using UnityEngine;
 public class Ui_Manager : MonoBehaviour
 {
     public static Ui_Manager instance;
-    public DrawMgr DrawSpace;
+    public DrawMgr ImageToDraw;
+    public DrawSpace_Mgr DrawSpace;
     public Inventory_SO inventory;
 
     // Start is called before the first frame update
@@ -19,20 +20,17 @@ public class Ui_Manager : MonoBehaviour
 
     public void ShowDrawSpace()
     {
-        instance.DrawSpace.gameObject.SetActive(true);
+        DrawSpace.gameObject.SetActive(true);
     }
 
     public void HideDrawSpace()
     {
-        instance.DrawSpace.gameObject.SetActive(false);
+        DrawSpace.gameObject.SetActive(false);
     }
     public void SetItem()
     {
-        DrawSpace.SetObjectToDraw(inventory.ItemToDraw);
+        ImageToDraw.SetObjectToDraw(inventory.ItemToDraw);
     }
-    public void Prova()
-    {
-        Debug.Log("chiamato");
-    }
+
  
 }
