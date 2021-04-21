@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9201130972125467464}
   - component: {fileID: 231875510600302089}
   - component: {fileID: 4903871631573550502}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9201130972760929240}
   - component: {fileID: 9201130972760929243}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: aaa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9201130972910979695}
   - component: {fileID: 9201130972910979694}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider
   m_TagString: Bow
   m_Icon: {fileID: 0}
