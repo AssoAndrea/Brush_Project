@@ -15,37 +15,63 @@ public class PlayerMove : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer SR;
     private float moveInput;
+    private float moveInputY;
     private bool isGrounded;        
     private Animator anim;
-    public LayerMask Ground;
-    public LayerMask Enemy;
+    AnimatorStateInfo animStateInfo;
+    int currState, jumpStateHash;
 
+    public bool onStairs;
+    public LayerMask Ground;
+    
     // Start is called before the first frame update
     void Start()
     {
         SR = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        jumpStateHash = Animator.StringToHash("PlayerJump");
     }
 
     void FixedUpdate()
     {
         moveInput = Input.GetAxisRaw("Horizontal");
- 
-        rb.velocity = new Vector2(moveInput * Speed, rb.velocity.y);
+        moveInputY = Input.GetAxisRaw("Vertical");
+
+        //rb.velocity = new Vector2(moveInput * Speed, rb.velocity.y);
+
+        if (onStairs)
+        {
+            rb.velocity = new Vector2(moveInput * 3, moveInputY * 3);            
+            rb.gravityScale = 0;
+        }
+        else
+        {
+            rb.velocity = new Vector2(moveInput * Speed, rb.velocity.y);
+            rb.gravityScale = 1;
+        }
     }
 
     // Update is called once per frame
     void Update()
-    {        
-        isGrounded = Physics2D.OverlapCircle(FeetPos.position, CheckRadius,Ground);
+    {
+        animStateInfo = anim.GetCurrentAnimatorStateInfo(0);
+        currState = animStateInfo.shortNameHash;
+
+        isGrounded = Physics2D.OverlapCircle(FeetPos.position, CheckRadius, Ground);        
 
         if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
         {
-            rb.velocity = Vector2.up * JumpForce;
+            onStairs = false;
+            rb.velocity = Vector2.up * JumpForce;            
             anim.SetTrigger("Jump");
         }
-        
+
+        if (currState == jumpStateHash)
+        {
+            onStairs = false;
+        }
+
         anim.SetInteger("Speed", (int)rb.velocity.x);
 
         if (IsDamaged)
@@ -73,7 +99,6 @@ public class PlayerMove : MonoBehaviour
         if (other.collider.gameObject.layer == 6)
         {
             IsDamaged = true;
-        }
-    }
-
+        }        
+    }    
 }
