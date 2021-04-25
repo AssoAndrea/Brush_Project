@@ -6,6 +6,7 @@ public class Ui_Manager : MonoBehaviour
 {
     public static Ui_Manager instance;
     public DrawMgr ImageToDraw;
+    public WeaponSystem Player;
     public DrawSpace_Mgr DrawSpace;
     public Inventory_SO inventory;
 
@@ -17,7 +18,11 @@ public class Ui_Manager : MonoBehaviour
     }
 
 
-
+    public void ItemDrawComplete()
+    {
+        HideDrawSpace();
+        Player.WeaponHandle = inventory.ItemToDraw.itemType;
+    }
     public void ShowDrawSpace()
     {
         DrawSpace.gameObject.SetActive(true);

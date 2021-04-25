@@ -6,8 +6,8 @@ public enum WeaponType { NoWeapon,Sword,Hammer,Bow,Last}
 
 public class WeaponSystem : MonoBehaviour
 {
-    public WeaponType WeaponHandle;
-    public WeaponType OldWeapon;
+    public ItemType WeaponHandle;
+    public ItemType OldWeapon;
     public GameObject SwordOBJ;
     public Animator SwordAnim;
     public GameObject HammerOBJ;
@@ -40,52 +40,44 @@ public class WeaponSystem : MonoBehaviour
 
         switch (WeaponHandle)
         {
-            case WeaponType.NoWeapon:
+            case ItemType.NoWeapon:
                 break;
-            case WeaponType.Sword:
+            case ItemType.Sword:
                 Sword();
                 break;
-            case WeaponType.Hammer:
+            case ItemType.Hammer:
                 Hammer();
                 break;
-            case WeaponType.Bow:
+            case ItemType.Bow:
                 Bow();
-                break;
-            case WeaponType.Last:
-                break;
-            default:
                 break;
         }
 
         
     }
-    void ResetWeapons(WeaponType type)
+    void ResetWeapons(ItemType type)
     {
         switch (type)
         {
-            case WeaponType.NoWeapon:
+            case ItemType.NoWeapon:
                 SwordOBJ.SetActive(false);
                 BowOBJ.SetActive(false);
                 HammerOBJ.SetActive(false);
                 break;
-            case WeaponType.Sword:
+            case ItemType.Sword:
                 SwordOBJ.SetActive(true);
                 BowOBJ.SetActive(false);
                 HammerOBJ.SetActive(false);
                 break;
-            case WeaponType.Hammer:
+            case ItemType.Hammer:
                 SwordOBJ.SetActive(false);
                 BowOBJ.SetActive(false);
                 HammerOBJ.SetActive(true);
                 break;
-            case WeaponType.Bow:
+            case ItemType.Bow:
                 SwordOBJ.SetActive(false);
                 BowOBJ.SetActive(true);
                 HammerOBJ.SetActive(false);
-                break;
-            case WeaponType.Last:
-                break;
-            default:
                 break;
         }
     }

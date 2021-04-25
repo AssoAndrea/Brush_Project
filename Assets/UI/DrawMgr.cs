@@ -131,7 +131,7 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
                     {
                         pressOnImage = false;
                         brush.canDraw = false;
-                        Debug.Log("preso ultimo");
+                        DrawComplete.Invoke();
                         Debug.Log("disegno completato");
                     }
 

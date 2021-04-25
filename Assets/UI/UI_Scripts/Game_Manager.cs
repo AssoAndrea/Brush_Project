@@ -8,7 +8,14 @@ public class Game_Manager : MonoBehaviour
 {
     public static Game_Manager instance;
     public Inventory_SO inventory;
-    
+
+    [Header("DEBUG KEYCODE")]
+    [Space(20)]
+    public KeyCode OpenAndCloseInventory = KeyCode.I;
+    public KeyCode SelectBow = KeyCode.Alpha1;
+    public KeyCode SelectSword = KeyCode.Alpha2;
+    public KeyCode SelectHammer = KeyCode.Alpha3;
+
 
     [Header("Events")]
     [Space(20)]
@@ -20,16 +27,14 @@ public class Game_Manager : MonoBehaviour
     {
         if (instance == null) instance = this;
     }
-
-    // Update is called once per frame
-    void Update()
+    void ItemSelection()
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(SelectBow))
         {
             DrawableItem itemToPick = new DrawableItem();
             foreach (DrawableItem item in inventory.drawableObjects.RedItem)
             {
-                if (item.type == RedInkItem.Arco)
+                if (item.type == ItemType.Bow)
                 {
                     itemToPick = item;
                     break;
@@ -40,7 +45,45 @@ public class Game_Manager : MonoBehaviour
             inventory.SelectedItemEvent.Raise();
             inventory.SelectedInkEvent.Raise();
         }
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(SelectSword))
+        {
+            DrawableItem itemToPick = new DrawableItem();
+            foreach (DrawableItem item in inventory.drawableObjects.RedItem)
+            {
+                if (item.type == ItemType.Sword)
+                {
+                    itemToPick = item;
+                    break;
+                }
+            }
+            inventory.ItemToDraw = itemToPick.item;
+            inventory.InkToUse = TypeOfInk.Red;
+            inventory.SelectedItemEvent.Raise();
+            inventory.SelectedInkEvent.Raise();
+        }
+        if (Input.GetKeyDown(SelectHammer))
+        {
+            DrawableItem itemToPick = new DrawableItem();
+            foreach (DrawableItem item in inventory.drawableObjects.RedItem)
+            {
+                if (item.type == ItemType.Hammer)
+                {
+                    itemToPick = item;
+                    break;
+                }
+            }
+            inventory.ItemToDraw = itemToPick.item;
+            inventory.InkToUse = TypeOfInk.Red;
+            inventory.SelectedItemEvent.Raise();
+            inventory.SelectedInkEvent.Raise();
+        }
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        ItemSelection();
+
+        if (Input.GetKeyDown(OpenAndCloseInventory))
         {
             if (inventory.DrawSpaceOpen)
             {

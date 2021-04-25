@@ -6,7 +6,7 @@ using System;
 [Serializable]
 public struct DrawableItem
 {
-    public RedInkItem type;
+    public ItemType type;
     public DrawableItem_SO item;
 
 }
@@ -14,7 +14,7 @@ public enum TypeOfInk
 {
     White, Red, Green, Last
 }
-public enum RedInkItem
+public enum ItemType
 {
-    Sword, Hammer,Arco
+    Sword, Hammer,Bow,NoWeapon
 }
