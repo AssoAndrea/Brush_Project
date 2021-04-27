@@ -36,6 +36,10 @@ public class Remaining_Color_Scr : MonoBehaviour
     {
         ImageToFill.fillAmount = val;
     }
+    private void OnEnable()
+    {
+        UpdateBar();
+    }
     public void UpdateBar()
     {
         switch (inventory.InkToUse)

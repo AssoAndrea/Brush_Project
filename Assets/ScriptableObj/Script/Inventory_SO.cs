@@ -6,6 +6,7 @@ using UnityEngine;
 public class Inventory_SO : ScriptableObject
 {
     [Header("Inventory")]
+    public Color[] AviableColors;
     public TypeOfInk InkToUse;
     public bool DrawSpaceOpen;
     public DrawableObjectsInventory drawableObjects;
@@ -24,8 +25,12 @@ public class Inventory_SO : ScriptableObject
     public float maxRedInk, maxWhiteInk, maxGreenInk;
     public float currRedInk, currWhiteInk, currGreenInk;
 
-    public void SetInk(TypeOfInk ink) => InkToUse = ink;
-    public void SetItemToDraw(DrawableItem_SO item) => ItemToDraw = item;
+    public void SetInk(TypeOfInk ink)
+    {
+        InkToUse = ink;
+        UpdateInkEvent.Raise();
+    }
+public void SetItemToDraw(DrawableItem_SO item) => ItemToDraw = item;
 
     public void AddInk(TypeOfInk ink, float amount)
     {

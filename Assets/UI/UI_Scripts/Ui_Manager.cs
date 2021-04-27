@@ -9,6 +9,7 @@ public class Ui_Manager : MonoBehaviour
     public WeaponSystem Player;
     public DrawSpace_Mgr DrawSpace;
     public Inventory_SO inventory;
+    public Color_Wheel ColorWheel;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +17,21 @@ public class Ui_Manager : MonoBehaviour
         if (!instance) instance = this;
         inventory.ResetInventory();
     }
-
+    void Update()
+    {
+        InputHandler();
+    }
+    private void InputHandler()
+    {
+        if (!inventory.DrawSpaceOpen)
+        {
+            ColorWheel.gameObject.SetActive(Input.GetKey(KeyCode.Q));
+        }
+        else
+        {
+            ColorWheel.gameObject.SetActive(false);
+        }
+    }
 
     public void ItemDrawComplete()
     {
