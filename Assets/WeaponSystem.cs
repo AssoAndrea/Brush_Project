@@ -7,6 +7,7 @@ public enum WeaponType { NoWeapon,Sword,Hammer,Bow,Last}
 public class WeaponSystem : MonoBehaviour
 {
     public ItemType WeaponHandle;
+    [HideInInspector]
     public ItemType OldWeapon;
     public GameObject SwordOBJ;
     public Animator SwordAnim;
