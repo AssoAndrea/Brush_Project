@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class DrawableObjectsInventory : ScriptableObject
 {
-    public DrawableItem[] RedItem;
-    public DrawableItem[] WhiteItem;
-    public DrawableItem[] GreenItem;
+    public RedDrawableItem[] RedItem;
+    public WhiteDrawableItem[] WhiteItem;
+    public GreenDrawableItem[] GreenItem;
 }

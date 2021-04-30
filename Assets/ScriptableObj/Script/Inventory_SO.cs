@@ -32,7 +32,11 @@ public class Inventory_SO : ScriptableObject
         UpdateInkEvent.Raise();
     }
 
-    public void SetItemToDraw(DrawableItem_SO item) => ItemToDraw = item;
+    public void SetItemToDraw(DrawableItem_SO item)
+    {
+        ItemToDraw = item;
+        SelectedItemEvent.Raise();
+    }
 
     public void AddInk(TypeOfInk ink, float amount)
     {

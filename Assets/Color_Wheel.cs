@@ -9,14 +9,14 @@ public class Color_Wheel : MonoBehaviour
     public Inventory_SO playerInventory;
     public Canvas Canvas;
     public RectTransform centerPrefab;
+    public RectTransform SpriteOnSectionPrefab;
+    public float WheelRotationOffset;
 
     float ScaleFactor;
     int NumberOfColors;
     List<ColorSection_Wheel> pointsToCheck = new List<ColorSection_Wheel>();
     ColorSection_Wheel selectedPoint;
     
-    int selectedIndex = -1;
-    List<Image> imagesOfWheel = new List<Image>();
 
 
     private void ResetTransform(ref RectTransform tr)
@@ -36,7 +36,7 @@ public class Color_Wheel : MonoBehaviour
             RectTransform img = Instantiate(sectionPrefab, transform);
             Vector3 dirr;
 
-            float zDegRot = i * degreeSection;
+            float zDegRot = -(i * degreeSection) +WheelRotationOffset;
             img.GetComponent<Image>().fillAmount = degreeSection / 360;
             img.rotation = Quaternion.Euler(img.rotation.eulerAngles.x, img.rotation.eulerAngles.y, zDegRot);
             Color colorToApply;
@@ -49,19 +49,24 @@ public class Color_Wheel : MonoBehaviour
             RectTransform point = Instantiate(centerPrefab, img.transform);
             point.name = "center of " + img.name;
             ColorSection_Wheel scr = point.GetComponent<ColorSection_Wheel>();
-            scr.par = img.GetComponent<RectTransform>();
+            scr.ParentOfWheel = img.GetComponent<RectTransform>();
 
 
 
             point.transform.localRotation = Quaternion.Euler(0, 0, point.transform.localRotation.eulerAngles.z - degreeSection / 2);
             point.position += point.transform.up * 2.6f;
+            if (playerInventory.colorsInventory.colors[i].IsLocked)
+            {
+                RectTransform imgOnSection = Instantiate(SpriteOnSectionPrefab,point.transform);
+                imgOnSection.SetParent(img.transform);
+                imgOnSection.GetComponent<Image>().sprite = playerInventory.colorsInventory.LockedSprite;
+            }
             Vector3 dd = point.position - img.position;
             dd.Normalize();
             scr.dir = point.position - img.position;
             scr.inkColor = playerInventory.colorsInventory.colors[i].inkType;
-            scr.par = img;
+            scr.ParentOfWheel = img;
             pointsToCheck.Add(scr);
-            imagesOfWheel.Add(img.GetComponent<Image>());
             scr.newParentAfter = transform;
             scr.InitScr();
 
@@ -72,7 +77,6 @@ public class Color_Wheel : MonoBehaviour
     void Start()
     {
         WheelCreation();
-
     }
 
     private Vector2 RectToScreen(RectTransform rect)
@@ -92,14 +96,21 @@ public class Color_Wheel : MonoBehaviour
             {
                 lastDist = dist;
                 minDistPoint = pointsToCheck[i];
-                selectedIndex = i;
+
+
+                
             }
             pointsToCheck[i].isSelected = false;
         }
         if (minDistPoint != null)
         {
-            selectedPoint = minDistPoint;
-            selectedPoint.isSelected = true;
+            if (playerInventory.colorsInventory.IsColorUnlocked(minDistPoint.inkColor))
+            {
+                selectedPoint = minDistPoint;
+                selectedPoint.isSelected = true;
+                playerInventory.SetInk(selectedPoint.inkColor);
+            }
+
 
         }
     }
@@ -108,10 +119,6 @@ public class Color_Wheel : MonoBehaviour
     void Update()
     {
         CheckWheel();
-        if (Input.GetMouseButtonDown(0))
-        {
-            playerInventory.SetInk((TypeOfInk)selectedIndex);
-        }
 
     }
 }

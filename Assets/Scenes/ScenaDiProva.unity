@@ -123,6 +123,62 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &2922143
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2922144}
+  - component: {fileID: 2922145}
+  m_Layer: 5
+  m_Name: WhiteItemWheel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &2922144
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2922143}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 45866142}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2922145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2922143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788ea587030418e4cb06f4419b48636b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sectionPrefab: {fileID: 4139694831901169602, guid: bf6f21c484d5aa24388e625cbc8631d1, type: 3}
+  playerInventory: {fileID: 11400000, guid: f9454c44e6fde79478e97256bd497a49, type: 2}
+  centerPrefab: {fileID: 6633673835229618764, guid: 76d9c6dea40b6294684a6e0cd6bf822f, type: 3}
+  SpriteOnSectionPrefab: {fileID: 5280222300520979181, guid: 165ba4cb6397d824dbdd03dc724c49d0, type: 3}
+  colorOfInk: 0
+  FillColor: {r: 0.8018868, g: 0.8018868, b: 0.8018868, a: 1}
+  WheelRotationOffset: 45
+  itemsOnWheel: []
 --- !u!1 &41189125
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,6 +261,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &45866140 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7537944280027862505, guid: c4d62224812ae2447890168a64e32276, type: 3}
+  m_PrefabInstance: {fileID: 1777038084}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &45866141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45866140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbd08650f2efb0241bda4a4d2a6cd5e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColorWheel: {fileID: 1166745370}
+  RedItemWheel: {fileID: 2140817951}
+  GreenItemWheel: {fileID: 648054429}
+  WhiteItemWheel: {fileID: 2922144}
+--- !u!224 &45866142 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7537944280027862506, guid: c4d62224812ae2447890168a64e32276, type: 3}
+  m_PrefabInstance: {fileID: 1777038084}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &80822807
 GameObject:
   m_ObjectHideFlags: 0
@@ -742,6 +824,67 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1120717395}
+--- !u!223 &637250357 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 7596070076554100827, guid: c4d62224812ae2447890168a64e32276, type: 3}
+  m_PrefabInstance: {fileID: 1777038084}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &648054428
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 648054429}
+  - component: {fileID: 648054430}
+  m_Layer: 5
+  m_Name: GreenItemWheel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &648054429
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648054428}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 45866142}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &648054430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648054428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788ea587030418e4cb06f4419b48636b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sectionPrefab: {fileID: 4139694831901169602, guid: bf6f21c484d5aa24388e625cbc8631d1, type: 3}
+  playerInventory: {fileID: 11400000, guid: f9454c44e6fde79478e97256bd497a49, type: 2}
+  centerPrefab: {fileID: 6633673835229618764, guid: 76d9c6dea40b6294684a6e0cd6bf822f, type: 3}
+  SpriteOnSectionPrefab: {fileID: 5280222300520979181, guid: 165ba4cb6397d824dbdd03dc724c49d0, type: 3}
+  colorOfInk: 2
+  FillColor: {r: 0.34100214, g: 0.9150943, b: 0.40565017, a: 1}
+  WheelRotationOffset: 45
+  itemsOnWheel: []
 --- !u!1 &691741363
 GameObject:
   m_ObjectHideFlags: 0
@@ -1365,6 +1508,60 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1166745369
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1166745370}
+  - component: {fileID: 1166745371}
+  m_Layer: 5
+  m_Name: ColorWheel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1166745370
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166745369}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 45866142}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1166745371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166745369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bb4415fcee1034b875911859b52a13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sectionPrefab: {fileID: 4139694831901169602, guid: bf6f21c484d5aa24388e625cbc8631d1, type: 3}
+  playerInventory: {fileID: 11400000, guid: f9454c44e6fde79478e97256bd497a49, type: 2}
+  Canvas: {fileID: 637250357}
+  centerPrefab: {fileID: 6633673835229618764, guid: 669822d56b193a94785c826f6c97694f, type: 3}
+  SpriteOnSectionPrefab: {fileID: 5280222300520979181, guid: 165ba4cb6397d824dbdd03dc724c49d0, type: 3}
+  WheelRotationOffset: 90
 --- !u!1 &1243353622 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7537944281325242949, guid: c4d62224812ae2447890168a64e32276, type: 3}
@@ -3755,6 +3952,22 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 9214117791625579558}
+    - target: {fileID: 2702156668077994428, guid: c4d62224812ae2447890168a64e32276, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 637250357}
+    - target: {fileID: 2702156668077994428, guid: c4d62224812ae2447890168a64e32276, type: 3}
+      propertyPath: Wheel_Mgr
+      value: 
+      objectReference: {fileID: 45866141}
+    - target: {fileID: 2702156668077994428, guid: c4d62224812ae2447890168a64e32276, type: 3}
+      propertyPath: openItemWheel
+      value: 101
+      objectReference: {fileID: 0}
+    - target: {fileID: 2702156668077994428, guid: c4d62224812ae2447890168a64e32276, type: 3}
+      propertyPath: openColorWheel
+      value: 113
+      objectReference: {fileID: 0}
     - target: {fileID: 3029722223327710602, guid: c4d62224812ae2447890168a64e32276, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3786,6 +3999,14 @@ PrefabInstance:
     - target: {fileID: 7387159652767866421, guid: c4d62224812ae2447890168a64e32276, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537944280027862505, guid: c4d62224812ae2447890168a64e32276, type: 3}
+      propertyPath: m_Name
+      value: Selection_Wheel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537944280027862505, guid: c4d62224812ae2447890168a64e32276, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7537944280027862506, guid: c4d62224812ae2447890168a64e32276, type: 3}
       propertyPath: m_Pivot.x
@@ -3823,6 +4044,14 @@ PrefabInstance:
       propertyPath: centerPrefab
       value: 
       objectReference: {fileID: 6633673835229618764, guid: 669822d56b193a94785c826f6c97694f, type: 3}
+    - target: {fileID: 7537944280027862507, guid: c4d62224812ae2447890168a64e32276, type: 3}
+      propertyPath: SpriteOnSectionPrefab
+      value: 
+      objectReference: {fileID: 5280222300520979181, guid: 165ba4cb6397d824dbdd03dc724c49d0, type: 3}
+    - target: {fileID: 7537944280027862507, guid: c4d62224812ae2447890168a64e32276, type: 3}
+      propertyPath: SpriteToDrawOnSection
+      value: 
+      objectReference: {fileID: 21300000, guid: b8331fa8cb5611c42adc3e6e25c02392, type: 3}
     - target: {fileID: 7537944281274358917, guid: c4d62224812ae2447890168a64e32276, type: 3}
       propertyPath: DrawComplete.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -3883,7 +4112,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game_UI
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7537944280027862507, guid: c4d62224812ae2447890168a64e32276, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c4d62224812ae2447890168a64e32276, type: 3}
 --- !u!1 &1854501948
 GameObject:
@@ -9291,6 +9521,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdcc34754fd837742be7a2150b96573f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2140817950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2140817951}
+  - component: {fileID: 2140817952}
+  m_Layer: 5
+  m_Name: RedItemWheel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &2140817951
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140817950}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 45866142}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2140817952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140817950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788ea587030418e4cb06f4419b48636b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sectionPrefab: {fileID: 4139694831901169602, guid: bf6f21c484d5aa24388e625cbc8631d1, type: 3}
+  playerInventory: {fileID: 11400000, guid: f9454c44e6fde79478e97256bd497a49, type: 2}
+  centerPrefab: {fileID: 6633673835229618764, guid: 76d9c6dea40b6294684a6e0cd6bf822f, type: 3}
+  SpriteOnSectionPrefab: {fileID: 5280222300520979181, guid: 165ba4cb6397d824dbdd03dc724c49d0, type: 3}
+  colorOfInk: 1
+  FillColor: {r: 0.8301887, g: 0.29369885, b: 0.29369885, a: 1}
+  WheelRotationOffset: 45
+  itemsOnWheel: []
 --- !u!1001 &3892511073840588586
 PrefabInstance:
   m_ObjectHideFlags: 0

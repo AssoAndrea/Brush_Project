@@ -4,12 +4,32 @@ using UnityEngine;
 using System;
 
 [Serializable]
-public struct DrawableItem
+public class DrawableItem
 {
-    public ItemType type;
     public DrawableItem_SO item;
+    public bool isLocked;
 
 }
+[Serializable]
+public class RedDrawableItem : DrawableItem
+{
+    public RedItem type;
+
+}
+
+[Serializable]
+public class GreenDrawableItem : DrawableItem
+{
+    public GreenItem type;
+
+}
+[Serializable]
+public class WhiteDrawableItem : DrawableItem
+{
+    public WhiteItem type;
+
+}
+
 public enum TypeOfInk
 {
     White, Red, Green,Blue,Orange,Purple,Yellow, Last

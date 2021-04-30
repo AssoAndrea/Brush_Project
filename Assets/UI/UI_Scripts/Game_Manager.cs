@@ -26,15 +26,20 @@ public class Game_Manager : MonoBehaviour
     void Start()
     {
         if (instance == null) instance = this;
+        inventory.InkToUse = TypeOfInk.Red;
+        inventory.SelectedInkEvent.Raise();
+        inventory.ItemToDraw = inventory.drawableObjects.RedItem[0].item;
+        inventory.SelectedItemEvent.Raise();
+
     }
     void ItemSelection()
     {
         if (Input.GetKeyDown(SelectBow))
         {
-            DrawableItem itemToPick = new DrawableItem();
-            foreach (DrawableItem item in inventory.drawableObjects.RedItem)
+            RedDrawableItem itemToPick = new RedDrawableItem();
+            foreach (RedDrawableItem item in inventory.drawableObjects.RedItem)
             {
-                if (item.type == ItemType.Bow)
+                if (item.type == RedItem.Bow)
                 {
                     itemToPick = item;
                     break;
@@ -47,10 +52,10 @@ public class Game_Manager : MonoBehaviour
         }
         if (Input.GetKeyDown(SelectSword))
         {
-            DrawableItem itemToPick = new DrawableItem();
-            foreach (DrawableItem item in inventory.drawableObjects.RedItem)
+            RedDrawableItem itemToPick = new RedDrawableItem();
+            foreach (RedDrawableItem item in inventory.drawableObjects.RedItem)
             {
-                if (item.type == ItemType.Sword)
+                if (item.type == RedItem.Sword)
                 {
                     itemToPick = item;
                     break;
@@ -63,10 +68,10 @@ public class Game_Manager : MonoBehaviour
         }
         if (Input.GetKeyDown(SelectHammer))
         {
-            DrawableItem itemToPick = new DrawableItem();
-            foreach (DrawableItem item in inventory.drawableObjects.RedItem)
+            RedDrawableItem itemToPick = new RedDrawableItem();
+            foreach (RedDrawableItem item in inventory.drawableObjects.RedItem)
             {
-                if (item.type == ItemType.Hammer)
+                if (item.type == RedItem.Hammer)
                 {
                     itemToPick = item;
                     break;

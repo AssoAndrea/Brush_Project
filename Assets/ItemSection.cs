@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColorSection_Wheel : MonoBehaviour
+public class ItemSection : MonoBehaviour
 {
-    public TypeOfInk inkColor;
+    public DrawableItem_SO item;
     public float offsetAnimation = 40;
     public RectTransform ParentOfWheel;
     public Transform newParentAfter;
@@ -13,7 +13,7 @@ public class ColorSection_Wheel : MonoBehaviour
     public bool executeAnimation;
     public float lerpSpeed = 10;
 
-    public Vector2 selectedPos, notSelectedPos, posToAnim,dir;
+    public Vector2 selectedPos, notSelectedPos, posToAnim, dir;
 
     // Start is called before the first frame update
     void Start()
@@ -71,7 +71,7 @@ public class ColorSection_Wheel : MonoBehaviour
     }
     void PerformAnimation()
     {
-        
-        ParentOfWheel.anchoredPosition = Vector2.Lerp(ParentOfWheel.anchoredPosition, posToAnim,lerpSpeed * Time.deltaTime);
+
+        ParentOfWheel.anchoredPosition = Vector2.Lerp(ParentOfWheel.anchoredPosition, posToAnim, lerpSpeed * Time.deltaTime);
     }
 }

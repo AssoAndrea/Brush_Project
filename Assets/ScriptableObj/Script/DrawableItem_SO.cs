@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class DrawableItem_SO: ScriptableObject
 {
+    public TypeOfInk ink;
     public Sprite ImageToDisplay;
     public Texture2D Mask;
     public GameObject Prefab;

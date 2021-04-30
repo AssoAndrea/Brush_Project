@@ -12,6 +12,18 @@ public class ColorsInventory : ScriptableObject
 
     //da aggiungere se c'è tempo
     public Sprite LockedSprite;
+
+    public bool IsColorUnlocked(TypeOfInk colorToCheck)
+    {
+        foreach (Color_Item item in colors)
+        {
+            if (item.inkType == colorToCheck && !item.IsLocked)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 [Serializable]

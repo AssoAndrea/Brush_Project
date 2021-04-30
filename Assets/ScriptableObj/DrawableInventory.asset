@@ -13,12 +13,47 @@ MonoBehaviour:
   m_Name: DrawableInventory
   m_EditorClassIdentifier: 
   RedItem:
-  - type: 0
-    inkColor: 1
-    item: {fileID: 11400000, guid: 42a8950796e29654eb88cbf3e59c42a8, type: 2}
-  - type: 2
-    inkColor: 1
-    item: {fileID: 11400000, guid: 6b237cdec6066d2429852978ccbf9a83, type: 2}
-  - type: 1
-    inkColor: 1
-    item: {fileID: 11400000, guid: 4830acf4c6e45374883a938e21bf5583, type: 2}
+  - item: {fileID: 11400000, guid: 42a8950796e29654eb88cbf3e59c42a8, type: 2}
+    isLocked: 0
+    type: 2
+  - item: {fileID: 11400000, guid: 4830acf4c6e45374883a938e21bf5583, type: 2}
+    isLocked: 0
+    type: 1
+  - item: {fileID: 11400000, guid: 6b237cdec6066d2429852978ccbf9a83, type: 2}
+    isLocked: 0
+    type: 3
+  - item: {fileID: 11400000, guid: 1cca4ad17ed0bd543a709cc0d106224e, type: 2}
+    isLocked: 1
+    type: 4
+  - item: {fileID: 11400000, guid: 1cca4ad17ed0bd543a709cc0d106224e, type: 2}
+    isLocked: 1
+    type: 5
+  - item: {fileID: 11400000, guid: 1cca4ad17ed0bd543a709cc0d106224e, type: 2}
+    isLocked: 1
+    type: 6
+  WhiteItem:
+  - item: {fileID: 11400000, guid: b3e6ec580ba0f424282d3992c5070647, type: 2}
+    isLocked: 0
+    type: 0
+  - item: {fileID: 11400000, guid: 1cca4ad17ed0bd543a709cc0d106224e, type: 2}
+    isLocked: 1
+    type: 1
+  - item: {fileID: 11400000, guid: 1cca4ad17ed0bd543a709cc0d106224e, type: 2}
+    isLocked: 1
+    type: 2
+  - item: {fileID: 11400000, guid: 1cca4ad17ed0bd543a709cc0d106224e, type: 2}
+    isLocked: 1
+    type: 3
+  GreenItem:
+  - item: {fileID: 11400000, guid: 141277f7a1f371d46a0b2cdfc0353628, type: 2}
+    isLocked: 0
+    type: 0
+  - item: {fileID: 11400000, guid: 2bfae216a82087b4bb222544fe2093c8, type: 2}
+    isLocked: 0
+    type: 1
+  - item: {fileID: 11400000, guid: 1cca4ad17ed0bd543a709cc0d106224e, type: 2}
+    isLocked: 1
+    type: 2
+  - item: {fileID: 11400000, guid: 1cca4ad17ed0bd543a709cc0d106224e, type: 2}
+    isLocked: 1
+    type: 3

@@ -9,9 +9,11 @@ public class Ui_Manager : MonoBehaviour
     public WeaponSystem Player;
     public DrawSpace_Mgr DrawSpace;
     public Inventory_SO inventory;
-    public Color_Wheel ColorWheel;
+    public Selection_Wheel_Mgr Wheel_Mgr;
+    public KeyCode openColorWheel, openItemWheel;
 
     public Canvas canvas;
+    public bool oneWheelAlreadyOpen = false;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -30,12 +32,28 @@ public class Ui_Manager : MonoBehaviour
     {
         if (!inventory.DrawSpaceOpen)
         {
-            ColorWheel.gameObject.SetActive(Input.GetKey(KeyCode.Q));
+            if (Input.GetKeyDown(openColorWheel))
+            {
+                Wheel_Mgr.ShowColorWheel();
+                oneWheelAlreadyOpen = true;
+            }
+            else if (Input.GetKeyUp(openColorWheel))
+            {
+                Wheel_Mgr.CloseAllWheel();
+                oneWheelAlreadyOpen = false;
+            }
+            if (Input.GetKeyDown(openItemWheel))
+            {
+                Wheel_Mgr.OpenItemWheel();
+                oneWheelAlreadyOpen = true;
+            }
+            else if (Input.GetKeyUp(openItemWheel))
+            {
+                Wheel_Mgr.CloseItemWheel();
+                oneWheelAlreadyOpen = false;
+            }
         }
-        else
-        {
-            ColorWheel.gameObject.SetActive(false);
-        }
+
     }
 
     public void ItemDrawComplete()

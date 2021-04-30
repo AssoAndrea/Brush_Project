@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0d58db0d8bf49e45be0fb859465d4f7, type: 3}
-  m_Name: Stairs
+  m_Name: Trampoline
   m_EditorClassIdentifier: 
-  ImageToDisplay: {fileID: 21300000, guid: 8c8f93e7f90fd204ea1333c4c341f311, type: 3}
-  Mask: {fileID: 2800000, guid: 68903ccacc6cbf44890218c9db16de5c, type: 3}
-  Prefab: {fileID: 0}
-  itemType: 0
-  ink: 2
+  ink: 0
+  ImageToDisplay: {fileID: 21300000, guid: a318bc0a8cd86db4a9fabd48904c281c, type: 3}
+  Mask: {fileID: 2800000, guid: 0962b87d0b5481941b12ecd9af396a3b, type: 3}
+  Prefab: {fileID: 6263922957981351084, guid: 724bdd5d4b8fcda4ea06fd747090faeb, type: 3}
+  TypeOfItem: 1
