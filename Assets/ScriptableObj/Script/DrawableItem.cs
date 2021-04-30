@@ -12,7 +12,7 @@ public struct DrawableItem
 }
 public enum TypeOfInk
 {
-    White, Red, Green, Last
+    White, Red, Green,Blue,Orange,Purple,Yellow, Last
 }
 public enum ItemType
 {

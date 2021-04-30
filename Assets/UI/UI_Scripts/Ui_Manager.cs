@@ -11,11 +11,16 @@ public class Ui_Manager : MonoBehaviour
     public Inventory_SO inventory;
     public Color_Wheel ColorWheel;
 
+    public Canvas canvas;
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         if (!instance) instance = this;
         inventory.ResetInventory();
+    }
+    void Start()
+    {
+
     }
     void Update()
     {
@@ -36,7 +41,22 @@ public class Ui_Manager : MonoBehaviour
     public void ItemDrawComplete()
     {
         HideDrawSpace();
-        Player.WeaponHandle = inventory.ItemToDraw.itemType;
+        switch (inventory.InkToUse)
+        {
+            case TypeOfInk.White:
+                break;
+            case TypeOfInk.Red:
+                RedInkItem_SO redItem = (RedInkItem_SO)inventory.ItemToDraw;
+                Player.WeaponHandle = redItem.TypeOfItem;
+                break;
+            case TypeOfInk.Green:
+                break;
+            case TypeOfInk.Last:
+                break;
+            default:
+                break;
+        }
+        //Player.WeaponHandle = inventory.ItemToDraw.itemType;
     }
     public void ShowDrawSpace()
     {

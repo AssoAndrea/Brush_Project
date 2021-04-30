@@ -16,9 +16,10 @@ MonoBehaviour:
   - {r: 1, g: 1, b: 1, a: 1}
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0, g: 1, b: 0.041554213, a: 1}
-  InkToUse: 1
+  InkToUse: -1
   DrawSpaceOpen: 0
   drawableObjects: {fileID: 11400000, guid: 177e93bfc68eb42418f9247459dd158a, type: 2}
+  colorsInventory: {fileID: 11400000, guid: 7be76fb7e7af04c42aeb687668bc2317, type: 2}
   ItemToDraw: {fileID: 11400000, guid: 42a8950796e29654eb88cbf3e59c42a8, type: 2}
   UpdateInkEvent: {fileID: 11400000, guid: f95bf90eaa1b62747afd71924163245c, type: 2}
   SelectedInkEvent: {fileID: 11400000, guid: f9fbb222e1af8b4479825de92d8a3834, type: 2}

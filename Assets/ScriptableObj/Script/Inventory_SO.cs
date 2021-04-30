@@ -10,6 +10,7 @@ public class Inventory_SO : ScriptableObject
     public TypeOfInk InkToUse;
     public bool DrawSpaceOpen;
     public DrawableObjectsInventory drawableObjects;
+    public ColorsInventory colorsInventory;
     public DrawableItem_SO ItemToDraw;
 
     [Header("Events")]
@@ -30,7 +31,8 @@ public class Inventory_SO : ScriptableObject
         InkToUse = ink;
         UpdateInkEvent.Raise();
     }
-public void SetItemToDraw(DrawableItem_SO item) => ItemToDraw = item;
+
+    public void SetItemToDraw(DrawableItem_SO item) => ItemToDraw = item;
 
     public void AddInk(TypeOfInk ink, float amount)
     {

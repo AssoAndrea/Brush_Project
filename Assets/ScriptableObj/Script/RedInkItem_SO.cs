@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class RedInkItem_SO : DrawableItem_SO
 {
     public TypeOfInk ink = TypeOfInk.Red;
+    public RedItem TypeOfItem;
 
 
 }
+public enum RedItem { NoWeapon,Hammer,Sword,Bow,Last}

@@ -9,7 +9,7 @@ public class DrawableItem_SO: ScriptableObject
     public Sprite ImageToDisplay;
     public Texture2D Mask;
     public GameObject Prefab;
-    public ItemType itemType;
+    //public ItemType itemType;
 
     public List<RectTransform> GetCheckpoints()
     {

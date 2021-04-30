@@ -8,42 +8,71 @@ public class Color_Wheel : MonoBehaviour
     public RectTransform sectionPrefab;
     public Inventory_SO playerInventory;
     public Canvas Canvas;
+    public RectTransform centerPrefab;
 
     float ScaleFactor;
     int NumberOfColors;
     List<ColorSection_Wheel> pointsToCheck = new List<ColorSection_Wheel>();
     ColorSection_Wheel selectedPoint;
+    
     int selectedIndex = -1;
     List<Image> imagesOfWheel = new List<Image>();
 
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void ResetTransform(ref RectTransform tr)
+    {
+        tr.anchoredPosition = Vector2.zero;
+        tr.localScale = Vector3.one;
+        tr.localPosition = new Vector3(tr.localPosition.x, tr.localPosition.y, 0);
+    }
+    void WheelCreation()
     {
         ScaleFactor = Canvas.scaleFactor;
-        NumberOfColors = playerInventory.AviableColors.Length;
-        Debug.Log(NumberOfColors);
+        NumberOfColors = playerInventory.colorsInventory.colors.Length;
         float degreeSection = 360 / NumberOfColors;
         float FillAmount = degreeSection / 360;
         for (int i = 0; i < NumberOfColors; i++)
         {
-            RectTransform img = Instantiate(sectionPrefab);
-            img.transform.SetParent(transform);
-            img.anchoredPosition = Vector2.zero;
-            img.localScale = Vector3.one;
-            img.localPosition = new Vector3(img.localPosition.x, img.localPosition.y, 0);
-            img.rotation = Quaternion.Euler(img.rotation.eulerAngles.x, img.rotation.eulerAngles.y, -i * degreeSection);
-            img.GetComponent<Image>().fillAmount = degreeSection / 360;
-            img.GetComponent<Image>().color = playerInventory.AviableColors[i];
+            RectTransform img = Instantiate(sectionPrefab, transform);
+            Vector3 dirr;
 
-            ColorSection_Wheel point = img.GetComponentInChildren<ColorSection_Wheel>();
-            point.inkColor = (TypeOfInk)i;
-            point.name = point.name + point.inkColor.ToString();
-            pointsToCheck.Add(point);
+            float zDegRot = i * degreeSection;
+            img.GetComponent<Image>().fillAmount = degreeSection / 360;
+            img.rotation = Quaternion.Euler(img.rotation.eulerAngles.x, img.rotation.eulerAngles.y, zDegRot);
+            Color colorToApply;
+            img.name = "Section " + playerInventory.colorsInventory.colors[i].inkType.ToString();
+            dirr = img.transform.up;
+            if (playerInventory.colorsInventory.colors[i].IsLocked) colorToApply = playerInventory.colorsInventory.LockedColor;
+            else colorToApply = playerInventory.colorsInventory.colors[i].color;
+            img.GetComponent<Image>().color = colorToApply;
+
+            RectTransform point = Instantiate(centerPrefab, img.transform);
+            point.name = "center of " + img.name;
+            ColorSection_Wheel scr = point.GetComponent<ColorSection_Wheel>();
+            scr.par = img.GetComponent<RectTransform>();
+
+
+
+            point.transform.localRotation = Quaternion.Euler(0, 0, point.transform.localRotation.eulerAngles.z - degreeSection / 2);
+            point.position += point.transform.up * 2.6f;
+            Vector3 dd = point.position - img.position;
+            dd.Normalize();
+            scr.dir = point.position - img.position;
+            scr.inkColor = playerInventory.colorsInventory.colors[i].inkType;
+            scr.par = img;
+            pointsToCheck.Add(scr);
             imagesOfWheel.Add(img.GetComponent<Image>());
+            scr.newParentAfter = transform;
+            scr.InitScr();
+
+
         }
-        
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+        WheelCreation();
+
     }
 
     private Vector2 RectToScreen(RectTransform rect)

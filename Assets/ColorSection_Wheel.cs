@@ -6,38 +6,44 @@ public class ColorSection_Wheel : MonoBehaviour
 {
     public TypeOfInk inkColor;
     public float offsetAnimation = 40;
-    public RectTransform parent;
+    public RectTransform par;
+    public Transform newParentAfter;
 
     public bool isSelected;
     public bool executeAnimation;
     public float lerpSpeed = 10;
 
     RectTransform own;
-    public Vector2 selectedPos, notSelectedPos, posToAnim;
+    public Vector2 selectedPos, notSelectedPos, posToAnim,dir;
 
     // Start is called before the first frame update
     void Start()
     {
-        parent = transform.parent.GetComponent<RectTransform>();
+    }
+    public void InitScr()
+    {
         own = GetComponent<RectTransform>();
-        Vector2 dir = own.position - parent.position;
-        dir.Normalize();
-        selectedPos = parent.anchoredPosition + (dir * offsetAnimation);
-        notSelectedPos = parent.anchoredPosition;
+
+        selectedPos = par.anchoredPosition + (dir * offsetAnimation);
+
+        notSelectedPos = par.anchoredPosition;
+        par.anchoredPosition = notSelectedPos;
+
+        transform.SetParent(newParentAfter);
+
     }
     private void OnEnable()
     {
-        if (parent==null)
+        if (par != null)
         {
-            parent = transform.parent.GetComponent<RectTransform>();
+            par.anchoredPosition = notSelectedPos;
         }
-        parent.anchoredPosition = notSelectedPos;
     }
     void HaveToAnimate()
     {
         if (isSelected)
         {
-            Vector2 distToPos = parent.anchoredPosition - selectedPos;
+            Vector2 distToPos = par.anchoredPosition - selectedPos;
             if (distToPos.magnitude > 0.1)
             {
                 executeAnimation = true;
@@ -47,7 +53,7 @@ public class ColorSection_Wheel : MonoBehaviour
         }
         else
         {
-            Vector2 distToPos = parent.anchoredPosition - notSelectedPos;
+            Vector2 distToPos = par.anchoredPosition - notSelectedPos;
             if (distToPos.magnitude > 0.1)
             {
                 executeAnimation = true;
@@ -58,6 +64,7 @@ public class ColorSection_Wheel : MonoBehaviour
     }
     void Update()
     {
+
         HaveToAnimate();
         if (executeAnimation)
         {
@@ -67,6 +74,6 @@ public class ColorSection_Wheel : MonoBehaviour
     void PerformAnimation()
     {
         
-        parent.anchoredPosition = Vector2.Lerp(parent.anchoredPosition, posToAnim,lerpSpeed * Time.deltaTime);
+        par.anchoredPosition = Vector2.Lerp(par.anchoredPosition, posToAnim,lerpSpeed * Time.deltaTime);
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -116,7 +117,7 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
                     float d = Vector3.Distance(t.anchoredPosition, RelativeMouseToImage());
                     if (d <= MinDistance)
                     {
-                        Debug.Log("preso check " + t.name);
+                        //Debug.Log("preso check " + t.name);
                         toRemove.Add(t);
                     }
                 }
@@ -152,6 +153,7 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
     // Update is called once per frame
     void Update()
     {
+
         DrawLogic();
         if (pressOnImage)
         {
@@ -210,7 +212,7 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
     {
 
     }
-
+   
     private void OnEnable()
     {
 

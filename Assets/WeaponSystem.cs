@@ -6,9 +6,9 @@ public enum WeaponType { NoWeapon,Sword,Hammer,Bow,Last}
 
 public class WeaponSystem : MonoBehaviour
 {
-    public ItemType WeaponHandle;
+    public RedItem WeaponHandle;
     [HideInInspector]
-    public ItemType OldWeapon;
+    public RedItem OldWeapon;
     public GameObject SwordOBJ;
     public Animator SwordAnim;
     public GameObject HammerOBJ;
@@ -41,41 +41,41 @@ public class WeaponSystem : MonoBehaviour
 
         switch (WeaponHandle)
         {
-            case ItemType.NoWeapon:
+            case RedItem.NoWeapon:
                 break;
-            case ItemType.Sword:
+            case RedItem.Sword:
                 Sword();
                 break;
-            case ItemType.Hammer:
+            case RedItem.Hammer:
                 Hammer();
                 break;
-            case ItemType.Bow:
+            case RedItem.Bow:
                 Bow();
                 break;
         }
 
         
     }
-    void ResetWeapons(ItemType type)
+    void ResetWeapons(RedItem type)
     {
         switch (type)
         {
-            case ItemType.NoWeapon:
+            case RedItem.NoWeapon:
                 SwordOBJ.SetActive(false);
                 BowOBJ.SetActive(false);
                 HammerOBJ.SetActive(false);
                 break;
-            case ItemType.Sword:
+            case RedItem.Sword:
                 SwordOBJ.SetActive(true);
                 BowOBJ.SetActive(false);
                 HammerOBJ.SetActive(false);
                 break;
-            case ItemType.Hammer:
+            case RedItem.Hammer:
                 SwordOBJ.SetActive(false);
                 BowOBJ.SetActive(false);
                 HammerOBJ.SetActive(true);
                 break;
-            case ItemType.Bow:
+            case RedItem.Bow:
                 SwordOBJ.SetActive(false);
                 BowOBJ.SetActive(true);
                 HammerOBJ.SetActive(false);

@@ -3819,6 +3819,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -50
       objectReference: {fileID: 0}
+    - target: {fileID: 7537944280027862507, guid: c4d62224812ae2447890168a64e32276, type: 3}
+      propertyPath: centerPrefab
+      value: 
+      objectReference: {fileID: 6633673835229618764, guid: 669822d56b193a94785c826f6c97694f, type: 3}
     - target: {fileID: 7537944281274358917, guid: c4d62224812ae2447890168a64e32276, type: 3}
       propertyPath: DrawComplete.m_PersistentCalls.m_Calls.Array.size
       value: 2

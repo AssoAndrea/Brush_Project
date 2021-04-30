@@ -64,7 +64,7 @@ public class PaintLine : MonoBehaviour
 
     void AddAPoint(Vector2 pointPos)
     {
-        Debug.Log(canDraw);
+        
         currentLineRenderer.positionCount++;
         int positionIndex = currentLineRenderer.positionCount - 1;
         currentLineRenderer.SetPosition(positionIndex, pointPos);
