@@ -37,6 +37,34 @@ public class Inventory_SO : ScriptableObject
         ItemToDraw = item;
         SelectedItemEvent.Raise();
     }
+    public void SetDefaultItem()
+    {
+        switch (InkToUse)
+        {
+            case TypeOfInk.White:
+                ItemToDraw = drawableObjects.WhiteItem[0].item;
+                break;
+            case TypeOfInk.Red:
+                ItemToDraw = drawableObjects.RedItem[0].item;
+                break;
+            case TypeOfInk.Green:
+                ItemToDraw = drawableObjects.GreenItem[0].item;
+                break;
+            case TypeOfInk.Blue:
+                break;
+            case TypeOfInk.Orange:
+                break;
+            case TypeOfInk.Purple:
+                break;
+            case TypeOfInk.Yellow:
+                break;
+            case TypeOfInk.Last:
+                break;
+            default:
+                break;
+        }
+        SelectedItemEvent.Raise();
+    }
 
     public void AddInk(TypeOfInk ink, float amount)
     {
