@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d58db0d8bf49e45be0fb859465d4f7, type: 3}
   m_Name: Stairs
   m_EditorClassIdentifier: 
-  ink: 0
-  ImageToDisplay: {fileID: 21300000, guid: f0ccc5b444d824b40ac6f89d5814aa15, type: 3}
-  Mask: {fileID: 2800000, guid: 06e038da830f5b54e859a81997ccb0dc, type: 3}
+  ink: 2
+  ImageToDisplay: {fileID: 21300000, guid: 1dd1ff15c1821624bbdd4c88b5b625c0, type: 3}
+  Mask: {fileID: 2800000, guid: 2863f762d692998448a6b145b72acbf4, type: 3}
   PrefabWithCheckPoint: {fileID: 6263922957981351084, guid: 814faac044bab394581a9da9f246dad1, type: 3}
-  PrefabToSpawn: {fileID: 0}
+  PrefabToSpawn: {fileID: 4158333692964180214, guid: e3e4cdfd0a008be44a0338d1b565696d, type: 3}
   TypeOfItem: 0

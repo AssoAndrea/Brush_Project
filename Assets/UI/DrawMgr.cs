@@ -140,7 +140,6 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
             }
             else
             {
-
                 OnFail();
             }
         }
