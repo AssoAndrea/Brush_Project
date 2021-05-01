@@ -133,6 +133,7 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
                         pressOnImage = false;
                         brush.canDraw = false;
                         DrawComplete.Invoke();
+                        Game_Manager.instance.inventory.DrawSpaceOpen = false;
                         Debug.Log("disegno completato");
                     }
 

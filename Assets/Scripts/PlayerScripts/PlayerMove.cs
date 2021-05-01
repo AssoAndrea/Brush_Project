@@ -47,8 +47,11 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-            rb.velocity = new Vector2(moveInput * Speed, rb.velocity.y);
-            rb.gravityScale = 1;
+            if (Game_Manager.instance.inventory.DrawSpaceOpen == false)
+            {
+                rb.velocity = new Vector2(moveInput * Speed, rb.velocity.y);
+                rb.gravityScale = 1;
+            }            
         }
     }
 
@@ -60,7 +63,7 @@ public class PlayerMove : MonoBehaviour
 
         isGrounded = Physics2D.OverlapCircle(FeetPos.position, CheckRadius, Ground);        
 
-        if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
+        if (isGrounded == true && Input.GetKeyDown(KeyCode.Space) && Game_Manager.instance.inventory.DrawSpaceOpen == false)
         {
             onStairs = false;
             rb.velocity = Vector2.up * JumpForce;            
@@ -99,6 +102,11 @@ public class PlayerMove : MonoBehaviour
         if (other.collider.gameObject.layer == 6)
         {
             IsDamaged = true;
-        }        
+        }
+
+        if (other.collider.gameObject.layer == 10)
+        {
+            rb.velocity = Vector2.up * (JumpForce + 2);
+        }
     }    
 }
