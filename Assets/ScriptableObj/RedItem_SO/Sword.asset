@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
   ink: 1
-  ImageToDisplay: {fileID: 21300000, guid: 1a3cec8d59464df4182f2c99747845dc, type: 3}
-  Mask: {fileID: 2800000, guid: 342759001dc21344fa397f0d06fb5f3c, type: 3}
+  ImageToDisplay: {fileID: 21300000, guid: bc7024027a49d6d4187cb5bb01a43ac8, type: 3}
+  Mask: {fileID: 2800000, guid: 7f067c8562570244abd9df0ccb14ba6d, type: 3}
   PrefabWithCheckPoint: {fileID: 6263922957981351084, guid: 522b7b6c1bf2c4744a679411aed55b58, type: 3}
   PrefabToSpawn: {fileID: 0}
   TypeOfItem: 2
