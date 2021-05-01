@@ -9,15 +9,15 @@ public class DrawableItem_SO: ScriptableObject
     public TypeOfInk ink;
     public Sprite ImageToDisplay;
     public Texture2D Mask;
-    public GameObject Prefab;
-    //public ItemType itemType;
+    public GameObject PrefabWithCheckPoint;
+    public GameObject PrefabToSpawn;
 
     public List<RectTransform> GetCheckpoints()
     {
         List<RectTransform> points = new List<RectTransform>();
-        foreach (RectTransform i in Prefab.GetComponentsInChildren<RectTransform>())
+        foreach (RectTransform i in PrefabWithCheckPoint.GetComponentsInChildren<RectTransform>())
         {
-            if (!(i.name == Prefab.name))
+            if (!(i.name == PrefabWithCheckPoint.name))
             {
                 points.Add(i);
             }
