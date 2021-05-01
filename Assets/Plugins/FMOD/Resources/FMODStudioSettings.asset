@@ -517,10 +517,10 @@ MonoBehaviour:
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: 
   SwitchSettingsMigration: 1
-  HasSourceProject: 1
-  HasPlatforms: 1
+  HasSourceProject: 0
+  HasPlatforms: 0
   sourceProjectPath: ../../Andrea/Progetti FMOD/EDM/BrushProj/BrushProj.fspro
-  sourceBankPath: ..\..\Andrea\Progetti FMOD\EDM\BrushProj\Build
+  sourceBankPath: FMOD_Assets
   SourceBankPathUnformatted: 
   AutomaticEventLoading: 1
   BankLoadType: 0
