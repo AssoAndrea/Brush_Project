@@ -24,6 +24,8 @@ public class ColorsInventory : ScriptableObject
         }
         return false;
     }
+
+    
 }
 
 [Serializable]

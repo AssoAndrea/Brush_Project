@@ -85,7 +85,7 @@ public class WeaponSystem : MonoBehaviour
 
     public void Sword()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && Game_Manager.instance.inventory.DrawSpaceOpen == false)
             SwordAnim.SetBool("Attack",true);
         else
             SwordAnim.SetBool("Attack",false);
@@ -93,7 +93,7 @@ public class WeaponSystem : MonoBehaviour
 
     public void Hammer()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && Game_Manager.instance.inventory.DrawSpaceOpen == false)
             HammerAnim.SetBool("Attack",true);
         else
             HammerAnim.SetBool("Attack", false);
@@ -108,7 +108,7 @@ public class WeaponSystem : MonoBehaviour
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
         BowRotObj.transform.rotation =Quaternion.Euler(new Vector3(0,0,angle));
 
-        if (Input.GetMouseButton(0)&& BowAnim.GetBool("Return") == true)
+        if (Input.GetMouseButton(0) && BowAnim.GetBool("Return") == true && Game_Manager.instance.inventory.DrawSpaceOpen == false)
         {
             BowAnim.SetBool("Fire", true);
             BowAnim.SetBool("Return", false);

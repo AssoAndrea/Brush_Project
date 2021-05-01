@@ -109,6 +109,7 @@ public class Color_Wheel : MonoBehaviour
                 selectedPoint = minDistPoint;
                 selectedPoint.isSelected = true;
                 playerInventory.SetInk(selectedPoint.inkColor);
+                playerInventory.SetDefaultItem();
             }
 
 

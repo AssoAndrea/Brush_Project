@@ -58,6 +58,7 @@ public class Ui_Manager : MonoBehaviour
 
     public void ItemDrawComplete()
     {
+        inventory.DrawSpaceOpen = false;
         HideDrawSpace();
         switch (inventory.InkToUse)
         {
