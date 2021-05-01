@@ -160,6 +160,14 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
         {
             Game_Manager.instance.inventory.RemoveInkWhileDraw();
         }
+
+        if (Input.GetKeyDown(KeyCode.P) )
+        {
+            Debug.Log("DrawComplete.Invoke()");
+            pressOnImage = false;
+            brush.canDraw = false;
+            DrawComplete.Invoke();
+        }
         
     }
     public void OnFail()

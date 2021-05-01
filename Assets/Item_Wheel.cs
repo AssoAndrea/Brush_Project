@@ -130,12 +130,15 @@ public class Item_Wheel : MonoBehaviour
         {
             case TypeOfInk.White:
                 itemsOnWheel = playerInventory.drawableObjects.WhiteItem;
+                playerInventory.ItemToDraw = playerInventory.drawableObjects.WhiteItem[0].item;
                 break;
             case TypeOfInk.Red:
                 itemsOnWheel = playerInventory.drawableObjects.RedItem;
+                playerInventory.ItemToDraw = playerInventory.drawableObjects.RedItem[0].item;
                 break;
             case TypeOfInk.Green:
                 itemsOnWheel = playerInventory.drawableObjects.GreenItem;
+                playerInventory.ItemToDraw = playerInventory.drawableObjects.GreenItem[0].item;
                 break;
             case TypeOfInk.Blue:
                 break;
@@ -151,14 +154,15 @@ public class Item_Wheel : MonoBehaviour
                 break;
         }
     }
+
     // Start is called before the first frame update
     void Start()
     {
         Switch_Color();
+
         WheelCreation();
         Debug.Log(pointsToCheck.Count);
     }
-
     // Update is called once per frame
     void Update()
     {

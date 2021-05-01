@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4158333692964180168}
   - component: {fileID: 4158333692964180215}
   m_Layer: 0
-  m_Name: LeefStairs
+  m_Name: LeafStairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,7 +119,7 @@ BoxCollider2D:
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 1}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0

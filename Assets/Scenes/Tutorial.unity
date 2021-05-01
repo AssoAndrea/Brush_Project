@@ -123,6 +123,62 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &132280806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 132280807}
+  - component: {fileID: 132280808}
+  m_Layer: 5
+  m_Name: Selection_Wheel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &132280807
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132280806}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 90}
+  m_LocalScale: {x: 0.00926, y: 0.00926, z: 0.00926}
+  m_Children:
+  - {fileID: 2122166658}
+  - {fileID: 1533215105}
+  - {fileID: 1065068514}
+  - {fileID: 1957628329}
+  m_Father: {fileID: 1035843202}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -963.77295, y: -542.803}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &132280808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132280806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbd08650f2efb0241bda4a4d2a6cd5e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColorWheel: {fileID: 2122166658}
+  RedItemWheel: {fileID: 1533215105}
+  GreenItemWheel: {fileID: 1065068514}
+  WhiteItemWheel: {fileID: 1957628329}
 --- !u!1 &164009866
 GameObject:
   m_ObjectHideFlags: 0
@@ -1916,6 +1972,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7537944280027862505, guid: c4d62224812ae2447890168a64e32276, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7537944280027862506, guid: c4d62224812ae2447890168a64e32276, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2009,6 +2069,67 @@ SortingGroup:
   m_SortingLayerID: 1858452143
   m_SortingLayer: 1
   m_SortingOrder: 40
+--- !u!224 &1035843202 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 567161852990618840, guid: c4d62224812ae2447890168a64e32276, type: 3}
+  m_PrefabInstance: {fileID: 1035843198}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1065068513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1065068514}
+  - component: {fileID: 1065068515}
+  m_Layer: 5
+  m_Name: GreenItemWheel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1065068514
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1065068513}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 132280807}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1065068515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1065068513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788ea587030418e4cb06f4419b48636b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sectionPrefab: {fileID: 4139694831901169602, guid: bf6f21c484d5aa24388e625cbc8631d1, type: 3}
+  playerInventory: {fileID: 11400000, guid: f9454c44e6fde79478e97256bd497a49, type: 2}
+  centerPrefab: {fileID: 6633673835229618764, guid: 76d9c6dea40b6294684a6e0cd6bf822f, type: 3}
+  SpriteOnSectionPrefab: {fileID: 5280222300520979181, guid: 165ba4cb6397d824dbdd03dc724c49d0, type: 3}
+  colorOfInk: 2
+  FillColor: {r: 0.34100214, g: 0.9150943, b: 0.40565017, a: 1}
+  WheelRotationOffset: 45
+  itemsOnWheel: []
 --- !u!1 &1080074257
 GameObject:
   m_ObjectHideFlags: 0
@@ -2241,6 +2362,62 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2000a47873b10c54aaf8ba4f8c247eea, type: 3}
+--- !u!1 &1533215104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1533215105}
+  - component: {fileID: 1533215106}
+  m_Layer: 5
+  m_Name: RedItemWheel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1533215105
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533215104}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 132280807}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1533215106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533215104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788ea587030418e4cb06f4419b48636b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sectionPrefab: {fileID: 4139694831901169602, guid: bf6f21c484d5aa24388e625cbc8631d1, type: 3}
+  playerInventory: {fileID: 11400000, guid: f9454c44e6fde79478e97256bd497a49, type: 2}
+  centerPrefab: {fileID: 6633673835229618764, guid: 76d9c6dea40b6294684a6e0cd6bf822f, type: 3}
+  SpriteOnSectionPrefab: {fileID: 5280222300520979181, guid: 165ba4cb6397d824dbdd03dc724c49d0, type: 3}
+  colorOfInk: 1
+  FillColor: {r: 0.8301887, g: 0.29369885, b: 0.29369885, a: 1}
+  WheelRotationOffset: 45
+  itemsOnWheel: []
 --- !u!1 &1591422847
 GameObject:
   m_ObjectHideFlags: 0
@@ -11807,3 +11984,113 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1957628328
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1957628329}
+  - component: {fileID: 1957628330}
+  m_Layer: 5
+  m_Name: WhiteItemWheel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1957628329
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957628328}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 132280807}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1957628330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957628328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788ea587030418e4cb06f4419b48636b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sectionPrefab: {fileID: 4139694831901169602, guid: bf6f21c484d5aa24388e625cbc8631d1, type: 3}
+  playerInventory: {fileID: 11400000, guid: f9454c44e6fde79478e97256bd497a49, type: 2}
+  centerPrefab: {fileID: 6633673835229618764, guid: 76d9c6dea40b6294684a6e0cd6bf822f, type: 3}
+  SpriteOnSectionPrefab: {fileID: 5280222300520979181, guid: 165ba4cb6397d824dbdd03dc724c49d0, type: 3}
+  colorOfInk: 0
+  FillColor: {r: 0.8018868, g: 0.8018868, b: 0.8018868, a: 1}
+  WheelRotationOffset: 45
+  itemsOnWheel: []
+--- !u!1 &2122166657
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2122166658}
+  - component: {fileID: 2122166659}
+  m_Layer: 5
+  m_Name: ColorWheel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &2122166658
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122166657}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 132280807}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2122166659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122166657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bb4415fcee1034b875911859b52a13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sectionPrefab: {fileID: 4139694831901169602, guid: bf6f21c484d5aa24388e625cbc8631d1, type: 3}
+  playerInventory: {fileID: 11400000, guid: f9454c44e6fde79478e97256bd497a49, type: 2}
+  Canvas: {fileID: 0}
+  centerPrefab: {fileID: 6633673835229618764, guid: 669822d56b193a94785c826f6c97694f, type: 3}
+  SpriteOnSectionPrefab: {fileID: 5280222300520979181, guid: 165ba4cb6397d824dbdd03dc724c49d0, type: 3}
+  WheelRotationOffset: 90
