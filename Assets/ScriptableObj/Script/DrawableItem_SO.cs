@@ -11,6 +11,7 @@ public class DrawableItem_SO: ScriptableObject
     public Texture2D Mask;
     public GameObject PrefabWithCheckPoint;
     public GameObject PrefabToSpawn;
+    public float InkToRemove;
 
     public List<RectTransform> GetCheckpoints()
     {

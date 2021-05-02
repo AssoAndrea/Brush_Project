@@ -17,4 +17,5 @@ MonoBehaviour:
   Mask: {fileID: 2800000, guid: d55958a2310f3414cae82531cdd057eb, type: 3}
   PrefabWithCheckPoint: {fileID: 6263922957981351084, guid: 090f56d13faea26449a81102f71a873b, type: 3}
   PrefabToSpawn: {fileID: 1132189486053142025, guid: 366fc61a6365d9c499288e5d943a2fbe, type: 3}
+  InkToRemove: 10
   TypeOfItem: 1

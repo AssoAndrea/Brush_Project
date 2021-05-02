@@ -68,6 +68,7 @@ public class PlayerMove : MonoBehaviour
             onStairs = false;
             rb.velocity = Vector2.up * JumpForce;            
             anim.SetTrigger("Jump");
+            SoundMgr.PlayOneShot("Jump");
         }
 
         if (currState == jumpStateHash)
@@ -80,6 +81,7 @@ public class PlayerMove : MonoBehaviour
         if (IsDamaged)
         {
             anim.SetBool("Damaged",true);
+            SoundMgr.PlayOneShot("Hurt");
             IsDamaged = false;
         }
 

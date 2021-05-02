@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Death : MonoBehaviour
 {
     public Image DeathImage;
-    public Transform respownPoint;
     Animator anim;
 
     // Start is called before the first frame update
@@ -26,7 +26,8 @@ public class Death : MonoBehaviour
             {
                 DeathImage.color = new Color(DeathImage.color.r, DeathImage.color.g, DeathImage.color.b,1);
                 anim.SetBool("Damaged", false);
-                transform.position = respownPoint.position;
+                SceneManager.LoadScene(2);
+
             }
         }
         else if (DeathImage.color.a > 0)
@@ -34,7 +35,9 @@ public class Death : MonoBehaviour
             DeathImage.color = new Color(DeathImage.color.r, DeathImage.color.g, DeathImage.color.b, DeathImage.color.a+-1*Time.deltaTime);
         }
         else
+        {
             DeathImage.gameObject.SetActive(false);
+        }
 
     }
 }

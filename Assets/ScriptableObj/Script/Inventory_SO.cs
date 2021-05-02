@@ -12,6 +12,7 @@ public class Inventory_SO : ScriptableObject
     public DrawableObjectsInventory drawableObjects;
     public ColorsInventory colorsInventory;
     public DrawableItem_SO ItemToDraw;
+    public bool IsPlacing;
 
     [Header("Events")]
     public GameEvent UpdateInkEvent;

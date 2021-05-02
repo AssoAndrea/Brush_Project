@@ -50,6 +50,7 @@ public class Ui_Manager : MonoBehaviour
             else if (Input.GetKeyUp(openItemWheel))
             {
                 Wheel_Mgr.CloseItemWheel();
+                ShowDrawSpace();
                 oneWheelAlreadyOpen = false;
             }
         }
@@ -79,11 +80,17 @@ public class Ui_Manager : MonoBehaviour
     }
     public void ShowDrawSpace()
     {
-        DrawSpace.gameObject.SetActive(true);
+        if (inventory.GetCurrentInk() > inventory.ItemToDraw.InkToRemove)
+        {
+            inventory.DrawSpaceOpen = true;
+            DrawSpace.gameObject.SetActive(true);
+        }
     }
 
     public void HideDrawSpace()
     {
+        inventory.DrawSpaceOpen = false;
+
         DrawSpace.gameObject.SetActive(false);
     }
     public void SetItem()
