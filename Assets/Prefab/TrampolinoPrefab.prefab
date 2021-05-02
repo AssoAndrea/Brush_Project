@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1132189486053142027}
   - component: {fileID: 1132189486053142024}
   - component: {fileID: -7067489951467670407}
+  - component: {fileID: -2533288263565569296}
   m_Layer: 10
   m_Name: TrampolinoPrefab
   m_TagString: GreenInk
@@ -109,3 +110,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.83619356, y: 0.5413418}
   m_EdgeRadius: 0
+--- !u!114 &-2533288263565569296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132189486053142025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f923e0f8feccba49b552e6cf9b1710f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InkAmount: 10

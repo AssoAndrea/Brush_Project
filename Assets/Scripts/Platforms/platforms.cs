@@ -8,6 +8,8 @@ namespace Scripts.Platforms
     public class platforms : MonoBehaviour
     {
         //public mouse KeyPressed;
+        public float InkAmount;
+
         bool isFreezed, isSelected;
         Vector3 clickedMouse;
 

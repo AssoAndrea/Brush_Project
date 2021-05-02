@@ -99,8 +99,10 @@ namespace Scripts.Platforms
                 {
                     if (transform.GetChild(i).tag == "WhiteInk")
                     {
-                        // inserire metodo per recupero inchiostro
-                        Debug.Log($"Distruggo figlio {i} colore BIANCO");
+                        float ink = transform.GetChild(i).gameObject.GetComponent<platforms>().InkAmount;
+                        Game_Manager.instance.inventory.AddInk(TypeOfInk.White, ink);
+                        
+                        //Debug.Log($"Distruggo figlio {i} colore BIANCO");
                         Destroy(transform.GetChild(i).gameObject);
                         break;
                     }
@@ -112,9 +114,19 @@ namespace Scripts.Platforms
                 for (int i = 0; i < numChild; i++)
                 {
                     if (transform.GetChild(i).tag == "GreenInk")
-                    {
-                        // inserire metodo per recupero inchiostro
-                        Debug.Log($"Distruggo figlio {i} colore VERDE");
+                    {    
+                        if(transform.GetChild(i).gameObject.name == "LeafStairs(Clone)")
+                        {
+                            float ink = transform.GetChild(i).gameObject.GetComponent<StairsScript>().InkAmount;
+                            Game_Manager.instance.inventory.AddInk(TypeOfInk.Green, ink);                            
+                        }
+                        else
+                        {
+                            float ink = transform.GetChild(i).gameObject.GetComponent<Trampolino>().InkAmount;
+                            Game_Manager.instance.inventory.AddInk(TypeOfInk.Green, ink);                            
+                        }
+
+                        //Debug.Log($"Distruggo figlio {i} colore VERDE");
                         Destroy(transform.GetChild(i).gameObject);
                         break;
                     }

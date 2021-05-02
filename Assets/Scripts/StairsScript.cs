@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StairsScript : MonoBehaviour
 {
+    public float InkAmount;
 
     GameObject Player;
     bool isFreezed;
