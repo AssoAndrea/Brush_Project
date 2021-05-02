@@ -23,6 +23,10 @@ public class SoundMgr : MonoBehaviour
     {
         
     }
+    public void VolumeTrigger()
+    {
+
+    }
     static public void PlayOneShot(string nameOrPath)
     {
         string path = GetPathFromName(nameOrPath);

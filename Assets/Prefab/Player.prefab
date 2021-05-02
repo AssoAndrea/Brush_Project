@@ -259,7 +259,7 @@ MonoBehaviour:
   BowOBJ: {fileID: 0}
   BowAnim: {fileID: 0}
   BowRotObj: {fileID: 0}
-  ArrowPrefab: {fileID: 0}
+  ArrowPrefab: {fileID: 9201130972125467462, guid: 4788e836f6112b544ac9fb39d3677c11, type: 3}
   FireRate: 0.5
 --- !u!1 &9214117793057251085
 GameObject:

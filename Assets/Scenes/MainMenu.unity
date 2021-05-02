@@ -720,13 +720,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1339765370}
   - component: {fileID: 1339765369}
+  - component: {fileID: 1339765371}
   m_Layer: 0
   m_Name: SoundMgr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1339765369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -740,11 +741,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: 
+  - name: Main
     path: event:/MainMusic
-  - name: 
+  - name: Hurt
     path: event:/Hurt
-  - name: 
+  - name: Jump
     path: event:/Jump
 --- !u!4 &1339765370
 Transform:
@@ -760,6 +761,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1339765371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339765368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af9d118b1fcd7d7469461c1d57f33d52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  param: 
 --- !u!1 &1370776466
 GameObject:
   m_ObjectHideFlags: 0

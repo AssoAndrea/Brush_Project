@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class StairsScript : MonoBehaviour
 {
-    public GameObject Player;
 
+    GameObject Player;
     bool isFreezed;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (Player == null)
+        {
+            Player = GameObject.Find("Player");
+        }
     }
 
     private void Update()
