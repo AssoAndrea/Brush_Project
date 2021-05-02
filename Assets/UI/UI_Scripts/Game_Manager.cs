@@ -102,5 +102,10 @@ public class Game_Manager : MonoBehaviour
                 onDrawSpaceOpen.Invoke();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 }

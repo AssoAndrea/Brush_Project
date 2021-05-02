@@ -11,6 +11,8 @@ TagManager:
   - Hammer
   - Sword
   - Bow
+  - WhiteInk
+  - GreenInk
   layers:
   - Default
   - TransparentFX

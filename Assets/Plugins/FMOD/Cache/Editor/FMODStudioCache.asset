@@ -63,7 +63,7 @@ MonoBehaviour:
   lastModified: 637555805458427758
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &-7063520924083795998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,7 +128,7 @@ MonoBehaviour:
   ID:
     data1: 3562933567
     data2: 2516314085
-  Exists: 1
+  Exists: 0
 --- !u!114 &-5536084322742356989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,8 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Timeline
   guid: 0013eba6b3deea4781fac806aa5ed274
-  Banks:
-  - {fileID: 4720039665061098830}
+  Banks: []
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -280,7 +279,7 @@ MonoBehaviour:
   - {fileID: -7756050485898041050}
   StringsBanks:
   - {fileID: 6436077668216030019}
-  stringsBankWriteTime: 637555805458437731
+  stringsBankWriteTime: 637555825917330589
   cacheVersion: 6
 --- !u!114 &1984532382019204571
 MonoBehaviour:
@@ -379,7 +378,7 @@ MonoBehaviour:
   Path: FMOD_Assets/LoopMusic.bank
   Name: LoopMusic
   StudioPath: bank:/LoopMusic
-  lastModified: 637555798473353562
+  lastModified: 637555825917271081
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -439,7 +438,7 @@ MonoBehaviour:
   Path: FMOD_Assets/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637555805458437731
+  lastModified: 637555825917330589
   LoadResult: 0
   FileSizes:
   - Name: 
