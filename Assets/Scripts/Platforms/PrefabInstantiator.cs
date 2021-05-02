@@ -21,7 +21,7 @@ namespace Scripts.Platforms
         // Update is called once per frame
         void Update()
         {
-            InstantiatePrefab();
+            //InstantiatePrefab();
             MovePrefab();
         }
 
@@ -37,7 +37,7 @@ namespace Scripts.Platforms
 
         public void InstantiatePrefab()
         {
-            if (canAddPrefab  && Input.GetKeyDown(AddPPrefabKey))
+            if (canAddPrefab)  //&& Input.GetKeyDown(AddPPrefabKey))
             {
                 canAddPrefab = false;
 
