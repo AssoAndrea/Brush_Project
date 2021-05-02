@@ -23,6 +23,11 @@ namespace Scripts.Platforms
         {
             //InstantiatePrefab();
             MovePrefab();
+
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                DeleteChild();
+            }
         }
 
         public void SelectPrefab()
@@ -80,6 +85,40 @@ namespace Scripts.Platforms
         private void ConfigColliderTF(bool truefalse)
         {
             prefab.GetComponent<Collider2D>().enabled = truefalse;
+        }
+
+        public void DeleteChild()
+        {
+            int numChild = transform.childCount;
+
+            if (Game_Manager.instance.inventory.InkToUse == TypeOfInk.White)
+            {
+                // ciclo sui figli alla ricerca del primo avente tag bianco per cancellarlo
+                for (int i = 0; i < numChild; i++)
+                {
+                    if (transform.GetChild(i).tag == "WhiteInk")
+                    {
+                        // inserire metodo per recupero inchiostro
+                        Debug.Log($"Distruggo figlio {i} colore BIANCO");
+                        Destroy(transform.GetChild(i).gameObject);
+                        break;
+                    }
+                }
+            }
+            else if (Game_Manager.instance.inventory.InkToUse == TypeOfInk.Green)
+            {
+                // ciclo sui figli alla ricerca del primo avente tag verde per cancellarlo
+                for (int i = 0; i < numChild; i++)
+                {
+                    if (transform.GetChild(i).tag == "GreenInk")
+                    {
+                        // inserire metodo per recupero inchiostro
+                        Debug.Log($"Distruggo figlio {i} colore VERDE");
+                        Destroy(transform.GetChild(i).gameObject);
+                        break;
+                    }
+                }
+            }
         }
     }
 }
