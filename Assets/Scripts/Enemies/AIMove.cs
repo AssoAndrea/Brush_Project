@@ -151,12 +151,12 @@ public class AIMove : MonoBehaviour
             #endregion
             if (rb2d.position.y >= maxY)
                 {
-                    Debug.Log("rb2d.position.y >= maxY");
+                    //Debug.Log("rb2d.position.y >= maxY");
                     DirectionY *= -1;
                 }
                 else if (rb2d.position.y <= minY)
                 {
-                    Debug.Log("rb2d.position.y <= minY");
+                    //Debug.Log("rb2d.position.y <= minY");
                     DirectionY = -DirectionY;
                 }
                 else

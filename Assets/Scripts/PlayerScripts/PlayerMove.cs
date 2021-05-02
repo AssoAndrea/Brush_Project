@@ -79,7 +79,7 @@ public class PlayerMove : MonoBehaviour
 
         if (IsDamaged)
         {
-            anim.SetTrigger("Damaged");
+            anim.SetBool("Damaged",true);
             IsDamaged = false;
         }
 
@@ -108,5 +108,13 @@ public class PlayerMove : MonoBehaviour
         {
             rb.velocity = Vector2.up * (JumpForce + 2);
         }
-    }    
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 11)
+        {
+            IsDamaged = true;
+        }
+    }
 }

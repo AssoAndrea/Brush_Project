@@ -161,7 +161,7 @@ public class Item_Wheel : MonoBehaviour
         Switch_Color();
 
         WheelCreation();
-        Debug.Log(pointsToCheck.Count);
+        //Debug.Log(pointsToCheck.Count);
     }
     // Update is called once per frame
     void Update()
