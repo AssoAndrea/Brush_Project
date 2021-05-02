@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class SoundMgr : MonoBehaviour
 {
+    public float maxVolume =0.5f;
     static SoundMgr GetInstance;
     List<StudioEventEmitter> emitters;
 
@@ -17,6 +18,13 @@ public class SoundMgr : MonoBehaviour
     {
         
     }
+    private void Awake()
+    {
+        if (GetInstance == null)
+        {
+            GetInstance = this;
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -25,7 +33,16 @@ public class SoundMgr : MonoBehaviour
     }
     public void VolumeTrigger()
     {
-
+        float actVolume;
+        FMODUnity.RuntimeManager.StudioSystem.getParameterByName("MasterVolume", out actVolume);
+        if (actVolume == 0)
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("MasterVolume", maxVolume);
+        }
+        else
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("MasterVolume", 0);
+        }
     }
     static public void PlayOneShot(string nameOrPath)
     {

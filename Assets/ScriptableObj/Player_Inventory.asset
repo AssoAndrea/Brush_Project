@@ -21,13 +21,14 @@ MonoBehaviour:
   drawableObjects: {fileID: 11400000, guid: 177e93bfc68eb42418f9247459dd158a, type: 2}
   colorsInventory: {fileID: 11400000, guid: 7be76fb7e7af04c42aeb687668bc2317, type: 2}
   ItemToDraw: {fileID: 11400000, guid: 42a8950796e29654eb88cbf3e59c42a8, type: 2}
+  IsPlacing: 0
   UpdateInkEvent: {fileID: 11400000, guid: f95bf90eaa1b62747afd71924163245c, type: 2}
   SelectedInkEvent: {fileID: 11400000, guid: f9fbb222e1af8b4479825de92d8a3834, type: 2}
   SelectedItemEvent: {fileID: 11400000, guid: 1e8300d514d17a346bf468cb5176bab7, type: 2}
   InkLoseWhileDraw: 5
-  StartRedInk: 50
-  StartWhiteInk: 50
-  StartGreenInk: 50
+  StartRedInk: 75
+  StartWhiteInk: 75
+  StartGreenInk: 75
   maxRedInk: 100
   maxWhiteInk: 100
   maxGreenInk: 100

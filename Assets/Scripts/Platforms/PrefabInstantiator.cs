@@ -7,6 +7,7 @@ namespace Scripts.Platforms
     {
         [SerializeField] public GameObject PlatformPrefab;
         [SerializeField] public KeyCode AddPPrefabKey;
+        public float LerpSpeed = 50;
 
         bool canAddPrefab;
         GameObject prefab;
@@ -43,7 +44,7 @@ namespace Scripts.Platforms
 
                 Debug.Log("Add platform");
                 prefab = Instantiate(PlatformPrefab, this.transform);
-                ConfigColliderTF(true);
+                ConfigColliderTF(false);
                 //prefab.GetComponent<Collider2D>().enabled = false;
             }
    
@@ -65,9 +66,9 @@ namespace Scripts.Platforms
             {
                 clickedMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 clickedMouse.z = 0;
-                prefab.transform.position = clickedMouse;
+                prefab.transform.position = Vector3.Lerp(prefab.transform.position,clickedMouse,LerpSpeed*Time.deltaTime);
 
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(1))
                 {
                     //prefab.GetComponent<Collider2D>().enabled = true;
                     ConfigColliderTF(true);

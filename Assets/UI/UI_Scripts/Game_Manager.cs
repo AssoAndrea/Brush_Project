@@ -92,12 +92,13 @@ public class Game_Manager : MonoBehaviour
         {
             if (inventory.DrawSpaceOpen)
             {
-                inventory.DrawSpaceOpen = false;
+                Ui_Manager.instance.HideDrawSpace();
                 onDrawSpaceClose.Invoke();
             }
             else
             {
-                inventory.DrawSpaceOpen = true;
+                Ui_Manager.instance.ShowDrawSpace();
+
                 onDrawSpaceOpen.Invoke();
             }
         }

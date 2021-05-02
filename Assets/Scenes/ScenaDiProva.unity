@@ -9133,6 +9133,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2341662937033556142, guid: f87d3eaa295119a4697cd8359d210294, type: 3}
+      propertyPath: LerpSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2341662937033556142, guid: f87d3eaa295119a4697cd8359d210294, type: 3}
       propertyPath: AddPPrefabKey
       value: 112
       objectReference: {fileID: 0}

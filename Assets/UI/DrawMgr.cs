@@ -125,6 +125,7 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
                 {
                     points.Remove(rectTransform);
                 }
+                toRemove.Clear();
 
                 if (points.Count <= 0)
                 {
@@ -133,6 +134,8 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
                         pressOnImage = false;
                         brush.canDraw = false;
                         DrawComplete.Invoke();
+                        Game_Manager.instance.inventory.AddInk(Game_Manager.instance.inventory.InkToUse, -Game_Manager.instance.inventory.ItemToDraw.InkToRemove);
+                        Game_Manager.instance.inventory.UpdateInkEvent.Raise();
                         Game_Manager.instance.inventory.DrawSpaceOpen = false;
                         Debug.Log("disegno completato");
                     }
@@ -157,7 +160,7 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
         DrawLogic();
         if (pressOnImage)
         {
-            Game_Manager.instance.inventory.RemoveInkWhileDraw();
+            //Game_Manager.instance.inventory.RemoveInkWhileDraw();
         }
 
         if (Input.GetKeyDown(KeyCode.P) )
@@ -171,6 +174,7 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
     }
     public void OnFail()
     {
+        toRemove.Clear();
         pressOnImage = false;
         points.Clear();
         brush.canDraw = false;
