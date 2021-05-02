@@ -208,12 +208,10 @@ MonoBehaviour:
   CheckRadius: 0.2
   IsDamaged: 0
   WeaponPos: {fileID: 3002054849147452153}
+  onStairs: 0
   Ground:
     serializedVersion: 2
     m_Bits: 1
-  Enemy:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!61 &1827506799
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -252,7 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b704d915d480d8d44a8a09f5ea433f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponHandle: 2
+  WeaponHandle: 0
   OldWeapon: 0
   SwordOBJ: {fileID: 0}
   SwordAnim: {fileID: 0}
@@ -260,6 +258,9 @@ MonoBehaviour:
   HammerAnim: {fileID: 0}
   BowOBJ: {fileID: 0}
   BowAnim: {fileID: 0}
+  BowRotObj: {fileID: 0}
+  ArrowPrefab: {fileID: 0}
+  FireRate: 0.5
 --- !u!1 &9214117793057251085
 GameObject:
   m_ObjectHideFlags: 0

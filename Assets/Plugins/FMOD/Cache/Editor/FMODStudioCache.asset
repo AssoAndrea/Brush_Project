@@ -272,7 +272,7 @@ MonoBehaviour:
   Path: FMOD_Assets/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637555125989808736
+  lastModified: 637555531640208887
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -291,7 +291,7 @@ MonoBehaviour:
   Path: FMOD_Assets/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637555125989818519
+  lastModified: 637555531640218883
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -322,7 +322,7 @@ MonoBehaviour:
   - {fileID: -1538979033080480097}
   StringsBanks:
   - {fileID: -714256476665103906}
-  stringsBankWriteTime: 637555125989818519
+  stringsBankWriteTime: 637555531640218883
   cacheVersion: 6
 --- !u!114 &425272649632728914
 MonoBehaviour:
@@ -443,10 +443,30 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 4004758554825245285}
+  - {fileID: 5739901675969771237}
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &5739901675969771237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Jump/Parameter 1
+  m_EditorClassIdentifier: 
+  Name: Parameter 1
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &6283252206567016274
 MonoBehaviour:
   m_ObjectHideFlags: 0
