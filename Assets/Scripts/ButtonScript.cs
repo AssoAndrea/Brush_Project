@@ -19,7 +19,7 @@ public class ButtonScript : MonoBehaviour
     {
         if (Activated)
         {
-            anim.SetTrigger("Active");
+            anim.SetBool("Active",true);
         }
     }
 
