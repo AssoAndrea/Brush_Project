@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerMove : MonoBehaviour
 {
@@ -117,6 +119,12 @@ public class PlayerMove : MonoBehaviour
         if (collision.gameObject.layer == 11)
         {
             IsDamaged = true;
+        }
+
+        if (collision.gameObject.layer == 12)
+        {
+            SceneManager.LoadScene(2);
+
         }
     }
 }

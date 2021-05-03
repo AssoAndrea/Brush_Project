@@ -26,7 +26,7 @@ public class Death : MonoBehaviour
             {
                 DeathImage.color = new Color(DeathImage.color.r, DeathImage.color.g, DeathImage.color.b,1);
                 anim.SetBool("Damaged", false);
-                SceneManager.LoadScene(2);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
             }
         }
