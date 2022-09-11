@@ -37,7 +37,7 @@ public class Color_Wheel : MonoBehaviour
             Vector3 dirr;
 
             float zDegRot = -(i * degreeSection) +WheelRotationOffset;
-            img.GetComponent<Image>().fillAmount = degreeSection / 360;
+            img.GetComponent<Image>().fillAmount = FillAmount;
             img.rotation = Quaternion.Euler(img.rotation.eulerAngles.x, img.rotation.eulerAngles.y, zDegRot);
             Color colorToApply;
             img.name = "Section " + playerInventory.colorsInventory.colors[i].inkType.ToString();

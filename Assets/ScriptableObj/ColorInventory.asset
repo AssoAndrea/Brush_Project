@@ -25,7 +25,7 @@ MonoBehaviour:
     IsLocked: 0
   - inkType: 3
     color: {r: 0, g: 0.054832935, b: 1, a: 1}
-    IsLocked: 1
+    IsLocked: 0
   - inkType: 4
     color: {r: 1, g: 0.46619305, b: 0, a: 1}
     IsLocked: 1

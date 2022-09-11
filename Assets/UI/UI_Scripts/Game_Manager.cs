@@ -30,6 +30,7 @@ public class Game_Manager : MonoBehaviour
         inventory.SelectedInkEvent.Raise();
         inventory.ItemToDraw = inventory.drawableObjects.RedItem[0].item;
         inventory.SelectedItemEvent.Raise();
+        SoundMgr.PlayOneShot("MainMusic");
 
     }
     void ItemSelection()

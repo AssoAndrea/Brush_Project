@@ -54,6 +54,13 @@ public class Ui_Manager : MonoBehaviour
                 oneWheelAlreadyOpen = false;
             }
         }
+        else
+        {
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                HideDrawSpace();
+            }
+        }
 
     }
 

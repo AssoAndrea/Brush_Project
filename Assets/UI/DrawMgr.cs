@@ -30,6 +30,8 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
     float ScaleFactor;
     Vector2 MouseClickOnCanvas;
 
+    public GameObject debug;
+
     //saved ink
     float startInk;
 
