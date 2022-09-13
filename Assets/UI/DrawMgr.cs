@@ -22,7 +22,7 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
     Texture2D MaskTexture;
     Canvas canvas;
     Image OwnImage;
-    List<RectTransform> points;
+    List<RectTransform> checkpoints;
     RectTransform lastPoint;
     List<RectTransform> toRemove;
     List<RectTransform> originalList = new List<RectTransform>();
@@ -48,26 +48,26 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
         MaskTexture = SelectedObject.Mask;
     }
 
-    //DOVE VENGONO CREATI I PUNTI E SETTATI I CHECKPOINT
+    //CHECKPOINT CREATION AND SETTINGS
     #region INIZIALIZZAZIONE 
     private void SetImageCheckPoints()
     {
         List<RectTransform> PointToCreate = SelectedObject.GetCheckpoints();
         CreatePointsOnScene(PointToCreate);
-        RectTransform[] p = GetComponentsInChildren<RectTransform>();
+        RectTransform[] points = GetComponentsInChildren<RectTransform>();
         ScaleFactor = canvas.scaleFactor;
         toRemove = new List<RectTransform>();
-        points = new List<RectTransform>();
-        foreach (RectTransform i in p)
+        this.checkpoints = new List<RectTransform>();
+        foreach (RectTransform point in points)
         {
-            if (i.tag == "Checkpoint")
+            if (point.tag == "Checkpoint")
             {
-                points.Add(i);
-                originalList.Add(i);
+                this.checkpoints.Add(point);
+                originalList.Add(point);
             }
             else
             {
-                lastPoint = i;
+                lastPoint = point;
             }
         }
     }
@@ -111,25 +111,24 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
             brush.canDraw = true;
             Color color = PickColor();
 
+            //Check if mouse is over the black mask and if user pass all checkpoints
             if (color == Color.black)
             {
-                foreach (RectTransform t in points)
+                foreach (RectTransform rectTransform in checkpoints)
                 {
-                    //Vector2 pos = new Vector2(t.position.x, t.position.y);
-                    float d = Vector3.Distance(t.anchoredPosition, RelativeMouseToImage());
-                    if (d <= MinDistance)
+                    float distance = Vector3.Distance(rectTransform.anchoredPosition, RelativeMouseToImage());
+                    if (distance <= MinDistance)
                     {
-                        //Debug.Log("preso check " + t.name);
-                        toRemove.Add(t);
+                        toRemove.Add(rectTransform);
                     }
                 }
                 foreach (RectTransform rectTransform in toRemove)
                 {
-                    points.Remove(rectTransform);
+                    checkpoints.Remove(rectTransform);
                 }
                 toRemove.Clear();
 
-                if (points.Count <= 0)
+                if (checkpoints.Count <= 0) //Completed
                 {
                     if (Vector2.Distance(lastPoint.anchoredPosition, RelativeMouseToImage()) <= MinDistance)
                     {
@@ -139,7 +138,6 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
                         Game_Manager.instance.inventory.AddInk(Game_Manager.instance.inventory.InkToUse, -Game_Manager.instance.inventory.ItemToDraw.InkToRemove);
                         Game_Manager.instance.inventory.UpdateInkEvent.Raise();
                         Game_Manager.instance.inventory.DrawSpaceOpen = false;
-                        Debug.Log("disegno completato");
                     }
 
                 }
@@ -160,29 +158,25 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
     {
 
         DrawLogic();
-        if (pressOnImage)
-        {
-            //Game_Manager.instance.inventory.RemoveInkWhileDraw();
-        }
-
-        if (Input.GetKeyDown(KeyCode.P) )
-        {
-            Debug.Log("DrawComplete.Invoke()");
-            pressOnImage = false;
-            brush.canDraw = false;
-            DrawComplete.Invoke();
-        }
-        
+        #region Debug
+        //if (Input.GetKeyDown(KeyCode.P) )
+        //{
+        //    Debug.Log("DrawComplete.Invoke()");
+        //    pressOnImage = false;
+        //    brush.canDraw = false;
+        //    DrawComplete.Invoke();
+        //}
+        #endregion
     }
     public void OnFail()
     {
         toRemove.Clear();
         pressOnImage = false;
-        points.Clear();
+        checkpoints.Clear();
         brush.canDraw = false;
         foreach (RectTransform tr in originalList)
         {
-            points.Add(tr);
+            checkpoints.Add(tr);
         }
         Game_Manager.instance.inventory.SetInkVal(Game_Manager.instance.inventory.InkToUse, startInk);
         Debug.Log("fuori");
@@ -211,8 +205,8 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
 
         MouseClickOnCanvas = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         pressOnImage = true;
-        Color c = PickColor();
-        if (c == Color.black)
+        Color color = PickColor();
+        if (color == Color.black)
         {
             lastPoint.anchoredPosition = RelativeMouseToImage();
         }
@@ -222,10 +216,6 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
     #endregion
 
     #region UnityCallback
-    void Start()
-    {
-
-    }
    
     private void OnEnable()
     {
@@ -248,18 +238,19 @@ public class DrawMgr : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPoin
         MouseClickOnCanvas = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         Vector2 clickNorm = RelativeMouseToImage();
 
-
         clickNorm.x /= OwnImage.rectTransform.rect.width;
         clickNorm.y /= OwnImage.rectTransform.rect.height;
 
-        Color c = MaskTexture.GetPixel((int)(clickNorm.x * MaskTexture.width), (int)(clickNorm.y * MaskTexture.height));
-        return c;
+
+        Color color = MaskTexture.GetPixel((int)(clickNorm.x * MaskTexture.width), (int)(clickNorm.y * MaskTexture.height));
+        return color;
     }
 
     Vector2 RelativeMouseToImage()
     {
         Vector2 res = Vector2.zero;
-        res = (MouseClickOnCanvas / ScaleFactor )- new Vector2(Camera.main.WorldToScreenPoint(OwnImage.transform.position).x, Camera.main.WorldToScreenPoint(OwnImage.transform.position).y);
+        res = MouseClickOnCanvas /*/ ScaleFactor )*/- new Vector2(Camera.main.WorldToScreenPoint(OwnImage.transform.position).x, Camera.main.WorldToScreenPoint(OwnImage.transform.position).y);
+        res/= ScaleFactor;
         return res;
     } 
     #endregion

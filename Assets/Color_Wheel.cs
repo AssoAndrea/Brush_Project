@@ -29,19 +29,17 @@ public class Color_Wheel : MonoBehaviour
     {
         ScaleFactor = Canvas.scaleFactor;
         NumberOfColors = playerInventory.colorsInventory.colors.Length;
-        float degreeSection = 360 / NumberOfColors;
+        float degreeSection = 360 / (float)NumberOfColors;
         float FillAmount = degreeSection / 360;
         for (int i = 0; i < NumberOfColors; i++)
         {
             RectTransform img = Instantiate(sectionPrefab, transform);
-            Vector3 dirr;
 
             float zDegRot = -(i * degreeSection) +WheelRotationOffset;
             img.GetComponent<Image>().fillAmount = FillAmount;
             img.rotation = Quaternion.Euler(img.rotation.eulerAngles.x, img.rotation.eulerAngles.y, zDegRot);
             Color colorToApply;
             img.name = "Section " + playerInventory.colorsInventory.colors[i].inkType.ToString();
-            dirr = img.transform.up;
             if (playerInventory.colorsInventory.colors[i].IsLocked) colorToApply = playerInventory.colorsInventory.LockedColor;
             else colorToApply = playerInventory.colorsInventory.colors[i].color;
             img.GetComponent<Image>().color = colorToApply;
@@ -61,9 +59,9 @@ public class Color_Wheel : MonoBehaviour
                 imgOnSection.SetParent(img.transform);
                 imgOnSection.GetComponent<Image>().sprite = playerInventory.colorsInventory.LockedSprite;
             }
-            Vector3 dd = point.position - img.position;
-            dd.Normalize();
-            scr.dir = point.position - img.position;
+            Vector3 direction = point.position - img.position;
+            direction.Normalize();
+            scr.dir = direction;
             scr.inkColor = playerInventory.colorsInventory.colors[i].inkType;
             scr.ParentOfWheel = img;
             pointsToCheck.Add(scr);
@@ -96,9 +94,6 @@ public class Color_Wheel : MonoBehaviour
             {
                 lastDist = dist;
                 minDistPoint = pointsToCheck[i];
-
-
-                
             }
             pointsToCheck[i].isSelected = false;
         }

@@ -47,8 +47,6 @@ public class Game_Manager : MonoBehaviour
                 }
             }
             inventory.ItemToDraw = itemToPick.item;
-            //inventory.InkToUse = TypeOfInk.Red;
-            //inventory.SelectedInkEvent.Raise();
             inventory.SelectedItemEvent.Raise();
         }
         if (Input.GetKeyDown(SelectSword))
@@ -63,8 +61,6 @@ public class Game_Manager : MonoBehaviour
                 }
             }
             inventory.ItemToDraw = itemToPick.item;
-            //inventory.InkToUse = TypeOfInk.Red;
-            //inventory.SelectedInkEvent.Raise();
             inventory.SelectedItemEvent.Raise();
         }
         if (Input.GetKeyDown(SelectHammer))
@@ -79,8 +75,6 @@ public class Game_Manager : MonoBehaviour
                 }
             }
             inventory.ItemToDraw = itemToPick.item;
-            //inventory.InkToUse = TypeOfInk.Red;
-            //inventory.SelectedInkEvent.Raise();
             inventory.SelectedItemEvent.Raise();
         }
     }

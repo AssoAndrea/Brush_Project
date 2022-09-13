@@ -26,22 +26,20 @@ public class Item_Wheel : MonoBehaviour
         for (int i = 0; i < NumberOfItem; i++)
         {
             RectTransform img = Instantiate(sectionPrefab, transform);
-            Vector3 dirr;
 
             float zDegRot = -(i * degreeSection) + WheelRotationOffset;
-            img.GetComponent<Image>().fillAmount = degreeSection / 360;
+            img.GetComponent<Image>().fillAmount = FillAmount;
             img.rotation = Quaternion.Euler(img.rotation.eulerAngles.x, img.rotation.eulerAngles.y, zDegRot);
 
             img.name = "Section " +itemsOnWheel[i].item.name;
-            dirr = img.transform.up;
             if (itemsOnWheel[i].isLocked) FillColor = playerInventory.colorsInventory.LockedColor;
             
             img.GetComponent<Image>().color = FillColor;
 
             RectTransform point = Instantiate(centerPrefab, img.transform);
             point.name = "center of " + img.name;
-            ItemSection scr = point.GetComponent<ItemSection>();
-            scr.ParentOfWheel = img.GetComponent<RectTransform>();
+            ItemSection itemSection = point.GetComponent<ItemSection>();
+            itemSection.ParentOfWheel = img.GetComponent<RectTransform>();
 
 
 
@@ -59,14 +57,14 @@ public class Item_Wheel : MonoBehaviour
                 imgOnSection.SetParent(img.transform);
                 imgOnSection.GetComponent<Image>().sprite = itemsOnWheel[i].item.ImageToDisplay;
             }
-            Vector3 dd = point.position - img.position;
-            dd.Normalize();
-            scr.dir = point.position - img.position;
-            scr.item = itemsOnWheel[i].item;
-            scr.ParentOfWheel = img;
-            pointsToCheck.Add(scr);
-            scr.newParentAfter = transform;
-            scr.InitScr();
+            Vector3 direction = point.position - img.position;
+            direction.Normalize();
+            itemSection.dir = direction;
+            itemSection.item = itemsOnWheel[i].item;
+            itemSection.ParentOfWheel = img;
+            pointsToCheck.Add(itemSection);
+            itemSection.newParentAfter = transform;
+            itemSection.Init();
 
 
         }
@@ -76,22 +74,21 @@ public class Item_Wheel : MonoBehaviour
     {
         return Camera.main.WorldToScreenPoint(rect.transform.position);
     }
-    private void CheckWheel()
+
+    
+    private void CheckWheel() //Select item on wheel
     {
         ItemSection minDistPoint = null;
         float lastDist = float.MaxValue;
         for (int i = 0; i < pointsToCheck.Count; i++)
         {
             Vector2 mousePosV2 = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            RectTransform tr = pointsToCheck[i].GetComponent<RectTransform>();
-            float dist = (mousePosV2 - RectToScreen(tr)).magnitude;
+            RectTransform rectTr = pointsToCheck[i].GetComponent<RectTransform>();
+            float dist = (mousePosV2 - RectToScreen(rectTr)).magnitude;
             if (dist < lastDist)
             {
                 lastDist = dist;
                 minDistPoint = pointsToCheck[i];
-
-
-
             }
             pointsToCheck[i].isSelected = false;
         }

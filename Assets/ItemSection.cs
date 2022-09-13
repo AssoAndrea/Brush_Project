@@ -19,7 +19,7 @@ public class ItemSection : MonoBehaviour
     void Start()
     {
     }
-    public void InitScr()
+    public void Init()
     {
 
         selectedPos = ParentOfWheel.anchoredPosition + (dir * offsetAnimation);

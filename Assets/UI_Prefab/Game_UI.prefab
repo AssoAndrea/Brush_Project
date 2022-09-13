@@ -799,6 +799,9 @@ MonoBehaviour:
   sectionPrefab: {fileID: 4139694831901169602, guid: bf6f21c484d5aa24388e625cbc8631d1, type: 3}
   playerInventory: {fileID: 11400000, guid: f9454c44e6fde79478e97256bd497a49, type: 2}
   Canvas: {fileID: 7596070076554100827}
+  centerPrefab: {fileID: 0}
+  SpriteOnSectionPrefab: {fileID: 0}
+  WheelRotationOffset: 0
 --- !u!1 &7537944280165019064
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,7 +895,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7537944280169718924
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1356,6 +1359,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  debug: {fileID: 0}
 --- !u!1 &7537944281325242949
 GameObject:
   m_ObjectHideFlags: 0
@@ -1665,7 +1669,7 @@ GameObject:
   - component: {fileID: 8340231235502404899}
   - component: {fileID: 8340231235502404898}
   m_Layer: 5
-  m_Name: Game_UI 1
+  m_Name: Game_UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1771,7 +1775,11 @@ MonoBehaviour:
   Player: {fileID: 0}
   DrawSpace: {fileID: 7537944280169718927}
   inventory: {fileID: 11400000, guid: f9454c44e6fde79478e97256bd497a49, type: 2}
-  ColorWheel: {fileID: 7537944280027862507}
+  Wheel_Mgr: {fileID: 0}
+  openColorWheel: 0
+  openItemWheel: 0
+  canvas: {fileID: 0}
+  oneWheelAlreadyOpen: 0
 --- !u!114 &8340231235502404897
 MonoBehaviour:
   m_ObjectHideFlags: 0
